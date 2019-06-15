@@ -44,6 +44,8 @@ def compute_mig(v_array, z_array):  # ground truth, latent variables
     return mig
 
 
+
+
 ## measure of the mutual dependence between the two variables
 
 def compute_mi(v, z):

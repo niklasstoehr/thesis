@@ -101,9 +101,6 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
             reconstructed_a = unpad_matrix(reconstructed_a, dataArgs["diag_value"], dataArgs["fix_n"])
             g = nx.from_numpy_matrix(reconstructed_a)
 
-            if len(g) > 0:
-                reconstructed_a = nx.adjacency_matrix(g).todense()
-
             # compute index for the subplot, and set this subplot as current
             jx = np.unravel_index(j, axs.shape)
             plt.sca(axs[jx])
@@ -129,7 +126,10 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
             filename = os.path.join(model_name, "digits_over_latent.png")
             plt.savefig(filename)
 
-            ## Latent Space Dimension is 2 ______________________
+
+
+
+    ## Latent Space Dimension is 2 ______________________
 
     if modelArgs["latent_dim"] == 2:
 
@@ -159,6 +159,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
             grid_y = np.sort(
                 np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]), 1, analyzeArgs["size_of_manifold"]))
 
+
         ## 2) create graph plots_______________________________________________
 
         fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8))
@@ -186,9 +187,6 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
                 ## reconstruct graph
                 reconstructed_a = unpad_matrix(reconstructed_a, dataArgs["diag_value"], dataArgs["fix_n"])
                 g = nx.from_numpy_matrix(reconstructed_a)
-
-                if len(g) > 0:
-                    reconstructed_a = nx.adjacency_matrix(g).todense()
 
                 # compute index for the subplot, and set this subplot as current
                 plt.sca(axs[i, j])
@@ -277,8 +275,6 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
                 ## reconstruct graph
                 reconstructed_a = unpad_matrix(reconstructed_a, dataArgs["diag_value"], dataArgs["fix_n"])
                 g = nx.from_numpy_matrix(reconstructed_a)
-                if len(g) > 0:
-                    reconstructed_a = nx.adjacency_matrix(g).todense()
 
                 # compute index for the subplot, and set this subplot as current
                 plt.sca(axs[i, j])
@@ -308,3 +304,443 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
         ## Generate Data _______________________________________
 
         # range, normal, z
+
+
+
+
+
+
+
+
+
+
+
+
+## DECODER - Latent Space Interpolation____________________________
+
+def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map, batch_size=128):
+    print("latent dimensions:", modelArgs["latent_dim"])
+
+    encoder, decoder = models  # trained models
+    x_test, y_test = data
+
+    # display a 2D plot of the digit classes in the latent space
+    z_mean, z_log_var, z = encoder.predict(x_test, batch_size)
+
+
+
+
+    ## Latent Space Dimension is 1 ______________________
+
+    if modelArgs["latent_dim"] == 1:
+
+        # linearly spaced coordinates corresponding to the 2D plot
+        # of digit classes in the latent space
+        if analyzeArgs["sample"] == "z":
+            grid_x = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]),
+                                              np.mean(np.exp(z_log_var[:, analyzeArgs["z"][0]])),
+                                              analyzeArgs["size_of_manifold"]))
+        elif analyzeArgs["sample"] == "range":
+            grid_x = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
+                                 analyzeArgs["size_of_manifold"])
+        elif analyzeArgs["sample"] == "normal":
+            grid_x = np.sort(
+                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), 1, analyzeArgs["size_of_manifold"]))
+
+
+        z_sample = np.zeros(modelArgs["latent_dim"])
+        z_sample = np.reshape(z_sample, (1, modelArgs["latent_dim"]))
+
+        ## 1) create graph topol plots_______________________________________________
+
+        fig, axs = plt.subplots(1, analyzeArgs["size_of_manifold"], figsize=(10, 10))
+        # fig.subplots_adjust(hspace = .5, wspace=.001)
+        axs = axs.ravel()
+
+        for j, xi in enumerate(grid_x):
+
+            z_sample[0][0] = xi ** analyzeArgs["act_scale"]
+            x_decoded = decoder.predict(z_sample)
+
+            ## reconstruct upper triangular adjacency matrix
+            reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
+
+            # reconstruct graph
+            reconstructed_a = unpad_matrix(reconstructed_a, dataArgs["diag_value"], dataArgs["fix_n"])
+            g = nx.from_numpy_matrix(reconstructed_a)
+
+
+            ## Obtain Graph Topologies____________________________________
+
+            density = nx.density(g)
+
+            if nx.is_connected(g):
+                diameter = nx.diameter(g)
+            else:
+                diameter = -1
+
+            cluster_coef = nx.average_clustering(g)
+
+            if g.number_of_edges() > 0:
+                assort = nx.degree_assortativity_coefficient(g, x='out', y='in')
+            else:
+                assort = 0
+
+            edges = g.number_of_edges()
+
+            avg_degree = sum(i for i in nx.degree_centrality(g).values()) / len(nx.degree_centrality(g).keys())
+
+
+            # compute index for the subplot, and set this subplot as current
+            jx = np.unravel_index(j, axs.shape)
+            plt.sca(axs[jx])
+
+
+            ## create the plot
+
+            topol = ("density", "diameter", "cluster_coef", "assort", "avg_degree")
+            y_pos = np.arange(len(topol))
+            topol_values = [density, diameter, cluster_coef, assort, avg_degree]
+
+            plt.bar(y_pos, topol_values, align='center', alpha=0.5)
+            plt.xticks(y_pos, topol)
+            #plt.ylabel('Usage')
+
+            axs[jx].set_axis_off()
+            axs[jx].set(ylabel='z_0')
+
+
+
+        # Plot_____________________________
+
+        plt.figure(figsize=(15, 300))
+        plt.show()
+
+        if analyzeArgs["save_plots"] == True:
+            filename = os.path.join(model_name, "digits_over_latent.png")
+            plt.savefig(filename)
+
+
+
+
+
+
+def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map, batch_size=128):
+
+    print("latent dimensions:", modelArgs["latent_dim"])
+
+    encoder, decoder = models  # trained models
+    x_test, y_test = data
+
+    # display a 2D plot of the digit classes in the latent space
+    z_mean, z_log_var, z = encoder.predict(x_test, batch_size)
+
+    ## Latent Space Dimension is 1 ______________________
+
+    if modelArgs["latent_dim"] == 1:
+
+        # linearly spaced coordinates corresponding to the 2D plot
+        # of digit classes in the latent space
+        if analyzeArgs["sample"] == "z":
+            grid_x = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]),
+                                              np.mean(np.exp(z_log_var[:, analyzeArgs["z"][0]])),
+                                              analyzeArgs["size_of_manifold"]))
+        elif analyzeArgs["sample"] == "range":
+            grid_x = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
+                                 analyzeArgs["size_of_manifold"])
+        elif analyzeArgs["sample"] == "normal":
+            grid_x = np.sort(
+                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), 1, analyzeArgs["size_of_manifold"]))
+
+        z_sample = np.zeros(modelArgs["latent_dim"])
+        z_sample = np.reshape(z_sample, (1, modelArgs["latent_dim"]))
+
+        ## 1) create graph topol plots_______________________________________________
+
+        fig, axs = plt.subplots(1, analyzeArgs["size_of_manifold"], figsize=(10, 10))
+        # fig.subplots_adjust(hspace = .5, wspace=.001)
+        axs = axs.ravel()
+
+        for j, xi in enumerate(grid_x):
+
+            z_sample[0][0] = xi ** analyzeArgs["act_scale"]
+            x_decoded = decoder.predict(z_sample)
+
+            ## reconstruct upper triangular adjacency matrix
+            reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
+
+            # reconstruct graph
+            reconstructed_a = unpad_matrix(reconstructed_a, dataArgs["diag_value"], dataArgs["fix_n"])
+            g = nx.from_numpy_matrix(reconstructed_a)
+
+            ## Obtain Graph Topologies____________________________________
+
+            density = nx.density(g)
+
+            if len(g) > 0:
+                if nx.is_connected(g):
+                    diameter = nx.diameter(g)
+            else:
+                diameter = -1
+
+            if len(g) > 0:
+                cluster_coef = nx.average_clustering(g)
+            cluster_coef = 0
+
+            if len(g) > 0:
+                if g.number_of_edges() > 0:
+                    assort = nx.degree_assortativity_coefficient(g, x='out', y='in')
+            else:
+                assort = 0
+
+            if len(g) > 0:
+                edges = g.number_of_edges()
+            else:
+                edges = 0
+
+            if len(g) > 0:
+                avg_degree = sum(i for i in nx.degree_centrality(g).values()) / len(nx.degree_centrality(g).keys())
+            else:
+                avg_degree = 0
+
+            # compute index for the subplot, and set this subplot as current
+            jx = np.unravel_index(j, axs.shape)
+            plt.sca(axs[jx])
+
+            ## create the plot_____________________________________________
+
+            if analyzeArgs["plot"] == "topol":
+
+                topol = ("density", "cluster_coef", "assort", "avg_degree")
+                colors = ["midnightblue", "blue", "steelblue", "skyblue"]
+
+                y_pos = np.arange(len(topol))
+                topol_values = [density, cluster_coef, assort, avg_degree]
+                plt.bar(y_pos, topol_values, color=colors, align='center')
+                plt.xticks(y_pos, topol)
+
+            elif analyzeArgs["plot"] == "distr":
+
+                degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
+                plt.plot(degree_sequence)
+
+            axs[jx].set_axis_off()
+
+        # import matplotlib.patches as mpatches
+
+        # density_patch = mpatches.Patch(color='midnightblue', label='density')
+        # cluster_patch = mpatches.Patch(color='blue', label='cluster_coef')
+        # assort_patch = mpatches.Patch(color='steelblue', label='assort')
+        # avg_degree_patch = mpatches.Patch(color='skyblue', label='avg_degree')
+        # axs[-1].legend(handles=[density_patch, cluster_patch, assort_patch, avg_degree_patch])
+
+        if analyzeArgs["save_plots"] == True:
+            filename = os.path.join(model_name, "digits_over_latent.png")
+            plt.savefig(filename)
+
+    if modelArgs["latent_dim"] == 2:
+
+        # linearly spaced coordinates corresponding to the 2D plot
+        # of digit classes in the latent space
+        if analyzeArgs["sample"] == "z":
+            grid_x = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]),
+                                              np.mean(np.exp(z_log_var[:, analyzeArgs["z"][0]])),
+                                              analyzeArgs["size_of_manifold"]))
+            grid_y = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]),
+                                              np.mean(np.exp(z_log_var[:, analyzeArgs["z"][1]])),
+                                              analyzeArgs["size_of_manifold"]))
+        elif analyzeArgs["sample"] == "range":
+            grid_x = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
+                                 analyzeArgs["size_of_manifold"])
+            grid_y = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
+                                 analyzeArgs["size_of_manifold"])[::-1]  ## revert
+        elif analyzeArgs["sample"] == "normal":
+            grid_x = np.sort(
+                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), 1, analyzeArgs["size_of_manifold"]))
+            grid_y = np.sort(
+                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]), 1, analyzeArgs["size_of_manifold"]))
+
+        ## 1) create graph topol plots_______________________________________________
+
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8))
+        # fig.subplots_adjust(hspace = .5, wspace=.001)
+
+        for i, yi in enumerate(grid_y):
+            for j, xi in enumerate(grid_x):
+
+                xi_value = xi ** analyzeArgs["act_scale"]
+                yi_value = yi ** analyzeArgs["act_scale"]
+
+                z_sample = np.array([[xi_value, yi_value]])
+                x_decoded = decoder.predict(z_sample)
+
+                ## reconstruct upper triangular adjacency matrix
+                reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
+
+                ## reconstruct graph
+                reconstructed_a = unpad_matrix(reconstructed_a, dataArgs["diag_value"], dataArgs["fix_n"])
+                g = nx.from_numpy_matrix(reconstructed_a)
+
+                ## Obtain Graph Topologies____________________________________
+
+                density = nx.density(g)
+
+                if len(g) > 0:
+                    if nx.is_connected(g):
+                        diameter = nx.diameter(g)
+                else:
+                    diameter = -1
+
+                if len(g) > 0:
+                    cluster_coef = nx.average_clustering(g)
+                cluster_coef = 0
+
+                if len(g) > 0:
+                    if g.number_of_edges() > 0:
+                        assort = nx.degree_assortativity_coefficient(g, x='out', y='in')
+                else:
+                    assort = 0
+
+                if len(g) > 0:
+                    edges = g.number_of_edges()
+                else:
+                    edges = 0
+
+                if len(g) > 0:
+                    avg_degree = sum(i for i in nx.degree_centrality(g).values()) / len(
+                        nx.degree_centrality(g).keys())
+                else:
+                    avg_degree = 0
+
+                # compute index for the subplot, and set this subplot as current
+                plt.sca(axs[i, j])
+
+                ## create the plot_____________________________________________
+
+                if analyzeArgs["plot"] == "topol":
+
+                    topol = ("density", "cluster_coef", "assort", "avg_degree")
+                    colors = ["midnightblue", "blue", "steelblue", "skyblue"]
+
+                    y_pos = np.arange(len(topol))
+                    topol_values = [density, cluster_coef, assort, avg_degree]
+                    plt.bar(y_pos, topol_values, color=colors, align='center')
+                    plt.xticks(y_pos, topol)
+
+                elif analyzeArgs["plot"] == "distr":
+
+                    degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
+                    plt.plot(degree_sequence)
+
+                axs[i, j].set_axis_off()
+
+        if analyzeArgs["save_plots"] == True:
+            filename = os.path.join(model_name, "digits_over_latent.png")
+            plt.savefig(filename)
+
+    if modelArgs["latent_dim"] > 2:
+
+        z_sample = np.zeros(modelArgs["latent_dim"])
+        z_sample = np.reshape(z_sample, (1, modelArgs["latent_dim"]))
+
+        # linearly spaced coordinates corresponding to the 2D plot
+        # of digit classes in the latent space
+        if analyzeArgs["sample"] == "z":
+            grid_x = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]),
+                                              np.mean(np.exp(z_log_var[:, analyzeArgs["z"][0]])),
+                                              analyzeArgs["size_of_manifold"]))
+            grid_y = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]),
+                                              np.mean(np.exp(z_log_var[:, analyzeArgs["z"][1]])),
+                                              analyzeArgs["size_of_manifold"]))
+        elif analyzeArgs["sample"] == "range":
+            grid_x = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
+                                 analyzeArgs["size_of_manifold"])
+            grid_y = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
+                                 analyzeArgs["size_of_manifold"])[::-1]  ## revert
+        elif analyzeArgs["sample"] == "normal":
+            grid_x = np.sort(
+                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), 1, analyzeArgs["size_of_manifold"]))
+            grid_y = np.sort(
+                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]), 1, analyzeArgs["size_of_manifold"]))
+
+        ## 1) create graph topol plots_______________________________________________
+
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(10, 10))
+        # fig.subplots_adjust(hspace = .5, wspace=.001)
+
+        ## fill unobserved dimensions with mean of latent variable dimension
+        for dim in range(0, len(z_sample[0])):
+            z_sample[0][dim] = np.mean(z_mean[:, dim])
+
+        for i, yi in enumerate(grid_y):
+            for j, xi in enumerate(grid_x):
+
+                z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
+                z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
+                x_decoded = decoder.predict(z_sample)
+
+                ## reconstruct upper triangular adjacency matrix
+                reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
+
+                ## reconstruct graph
+                reconstructed_a = unpad_matrix(reconstructed_a, dataArgs["diag_value"], dataArgs["fix_n"])
+                g = nx.from_numpy_matrix(reconstructed_a)
+
+                ## Obtain Graph Topologies____________________________________
+
+                density = nx.density(g)
+
+                if len(g) > 0:
+                    if nx.is_connected(g):
+                        diameter = nx.diameter(g)
+                else:
+                    diameter = -1
+
+                if len(g) > 0:
+                    cluster_coef = nx.average_clustering(g)
+                cluster_coef = 0
+
+                if len(g) > 0:
+                    if g.number_of_edges() > 0:
+                        assort = nx.degree_assortativity_coefficient(g, x='out', y='in')
+                else:
+                    assort = 0
+
+                if len(g) > 0:
+                    edges = g.number_of_edges()
+                else:
+                    edges = 0
+
+                if len(g) > 0:
+                    avg_degree = sum(i for i in nx.degree_centrality(g).values()) / len(
+                        nx.degree_centrality(g).keys())
+                else:
+                    avg_degree = 0
+
+                # compute index for the subplot, and set this subplot as current
+                plt.sca(axs[i, j])
+
+                ## create the plot_____________________________________________
+
+                if analyzeArgs["plot"] == "topol":
+
+                    topol = ("density", "cluster_coef", "assort", "avg_degree")
+                    colors = ["midnightblue", "blue", "steelblue", "skyblue"]
+
+                    y_pos = np.arange(len(topol))
+                    topol_values = [density, cluster_coef, assort, avg_degree]
+                    plt.bar(y_pos, topol_values, color=colors, align='center')
+                    plt.xticks(y_pos, topol)
+
+                elif analyzeArgs["plot"] == "distr":
+
+                    degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
+                    plt.plot(degree_sequence)
+
+                axs[i, j].set_axis_off()
+
+        if analyzeArgs["save_plots"] == True:
+            filename = os.path.join(model_name, "digits_over_latent.png")
+            plt.savefig(filename)
+
+
