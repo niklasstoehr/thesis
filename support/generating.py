@@ -1,4 +1,4 @@
-from preprocessing import reconstruct_adjacency, unpad_matrix
+from support.preprocessing import reconstruct_adjacency, unpad_matrix
 
 import networkx as nx
 import numpy as np

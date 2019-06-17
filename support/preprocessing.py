@@ -16,7 +16,8 @@ def sort_adjacency(g):
 
     node_sorting = list()
 
-    for node_id in range(0, len(g)):
+    #for node_id in range(0, len(g)):
+    for node_id in g.nodes():
         node_sorting.append(
             (node_id, node_k1[node_id], node_k2[node_id], node_closeness[node_id], node_betweenness[node_id]))
 
@@ -28,7 +29,7 @@ def sort_adjacency(g):
         mapping[node[0]] = i
 
     a = nx.adjacency_matrix(g, nodelist=mapping.keys()).todense()
-    g = nx.relabel_nodes(g, mapping)
+    #g = nx.relabel_nodes(g, mapping)  # change node_id according to ordering
 
     return g, a
 
