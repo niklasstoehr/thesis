@@ -20,7 +20,10 @@ class ForestFire():
         #print(random_node)
         q = set() #q = set contains the distinct values
         q.add(random_node)
+        start_time = time.time()
         while(len(self.G1.nodes())<size):
+            if time.time() - start_time > 0.25:  # break if it gets stuck
+                break
             if(len(q)>0):
                 initial_node = q.pop()
                 if(initial_node not in dictt):

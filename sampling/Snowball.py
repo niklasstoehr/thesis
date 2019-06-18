@@ -54,7 +54,10 @@ class Snowball():
             q.enqueue(id)
             m = m - 1
         #print(q.printQueue())
+        start_time = time.time()
         while(len(self.G1.nodes()) <= size):
+            if time.time() - start_time > 0.25:  # break if it gets stuck
+                break
             if(q.size() > 0):
                 id = q.dequeue()
                 self.G1.add_node(id)

@@ -133,7 +133,7 @@ if __name__ == "__main__":
 
     g = random_graphs.erdos_renyi_graph(4, 0.2, seed=None)  # no edges are removed
     g, a = sort_adjacency(g)
-    upper_a = upper_triangle(a, diag_offset=0)
+    upper_a = reshape_A(a, diag_offset=0)
     reconstructed_a = reconstruct_adjacency(upper_a, clip=True, diag_offset=0)
 
     max_adjacency = pad_matrix(a, 50, 1)
