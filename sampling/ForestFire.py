@@ -6,6 +6,7 @@ import time
 # G : Original Graph
 # size : size of the sampled graph
 class ForestFire():
+
     def __init__(self,g_complete, a_complete):
         self.G1 = nx.Graph()
         self.g_complete = g_complete

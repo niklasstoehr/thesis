@@ -57,6 +57,9 @@ class Random_Walk:
             complete_graph.node[n]['id'] = n
 
         nr_nodes = len(complete_graph.nodes())
+
+        if nodes_to_sample >= len(self.g_complete):
+            nodes_to_sample = len(self.g_complete)
         upper_bound_nr_nodes_to_sample = nodes_to_sample
 
         index_of_first_random_node = random.randint(0, nr_nodes-1)
@@ -81,10 +84,11 @@ class Random_Walk:
             if iteration % self.T == 0:
                 if ((sampled_graph.number_of_edges() - edges_before_t_iter) < self.growth_size):
                     curr_node = random.randint(0, nr_nodes-1)
-                    print ("Choosing another random node to continue random walk ")
+                    #print ("Choosing another random node to continue random walk ")
                 edges_before_t_iter = sampled_graph.number_of_edges()
 
         return sampled_graph
+
 
     def random_walk_induced_graph_sampling(self, nodes_to_sample):
         complete_graph = nx.convert_node_labels_to_integers(self.g_complete, 0, 'default', True)
@@ -93,6 +97,9 @@ class Random_Walk:
             complete_graph.node[n]['id'] = n
             
         nr_nodes = len(complete_graph.nodes())
+
+        if nodes_to_sample >= len(self.g_complete):
+            nodes_to_sample = len(self.g_complete)
         upper_bound_nr_nodes_to_sample = nodes_to_sample
         index_of_first_random_node = random.randint(0, nr_nodes - 1)
 

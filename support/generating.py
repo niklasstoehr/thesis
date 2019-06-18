@@ -142,22 +142,14 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
         # linearly spaced coordinates corresponding to the 2D plot
         # of digit classes in the latent space
         if analyzeArgs["sample"] == "z":
-            grid_x = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]),
-                                              np.mean(np.exp(z_log_var[:, analyzeArgs["z"][0]])),
-                                              analyzeArgs["size_of_manifold"]))
-            grid_y = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]),
-                                              np.mean(np.exp(z_log_var[:, analyzeArgs["z"][1]])),
-                                              analyzeArgs["size_of_manifold"]))
+            grid_x = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), np.mean(np.exp(z_log_var[:, analyzeArgs["z"][0]])),analyzeArgs["size_of_manifold"]))
+            grid_y = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]),np.mean(np.exp(z_log_var[:, analyzeArgs["z"][1]])),analyzeArgs["size_of_manifold"]))
         elif analyzeArgs["sample"] == "range":
-            grid_x = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
-                                 analyzeArgs["size_of_manifold"])
-            grid_y = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
-                                 analyzeArgs["size_of_manifold"])[::-1]  ## revert
+            grid_x = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1], analyzeArgs["size_of_manifold"])
+            grid_y = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],analyzeArgs["size_of_manifold"])[::-1]  ## revert
         elif analyzeArgs["sample"] == "normal":
-            grid_x = np.sort(
-                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), 1, analyzeArgs["size_of_manifold"]))
-            grid_y = np.sort(
-                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]), 1, analyzeArgs["size_of_manifold"]))
+            grid_x = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), 1, analyzeArgs["size_of_manifold"]))
+            grid_y = np.sort(np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]), 1, analyzeArgs["size_of_manifold"]))
 
 
         ## 2) create graph plots_______________________________________________
@@ -213,7 +205,13 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
             filename = os.path.join(model_name, "digits_over_latent.png")
             plt.savefig(filename)
 
-            ## Latent Space Dimension is larger than 2 ______________________
+
+
+
+
+
+
+    ## Latent Space Dimension is larger than 2 ______________________
 
     if modelArgs["latent_dim"] > 2:
 
@@ -511,13 +509,25 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
             if analyzeArgs["plot"] == "topol":
 
-                topol = ("density", "cluster_coef", "assort", "avg_degree")
-                colors = ["midnightblue", "blue", "steelblue", "skyblue"]
+                topol = ("cluster_coef", "assort", "avg_degree")
+                colors = ["midnightblue", "steelblue", "skyblue"]
 
                 y_pos = np.arange(len(topol))
-                topol_values = [density, cluster_coef, assort, avg_degree]
+                topol_values = [cluster_coef, assort, avg_degree]
                 plt.bar(y_pos, topol_values, color=colors, align='center')
                 plt.xticks(y_pos, topol)
+
+
+            elif analyzeArgs["plot"] == "nodes_edges":
+
+                topol = ("#nodes", "density")
+                colors = ["midnightblue", "steelblue"]
+
+                y_pos = np.arange(len(topol))
+                topol_values = [len(g.nodes()) / dataArgs["n_max"], density]
+                plt.bar(y_pos, topol_values, color=colors, align='center')
+                plt.xticks(y_pos, topol)
+
 
             elif analyzeArgs["plot"] == "distr":
 
@@ -619,13 +629,25 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
                 if analyzeArgs["plot"] == "topol":
 
-                    topol = ("density", "cluster_coef", "assort", "avg_degree")
-                    colors = ["midnightblue", "blue", "steelblue", "skyblue"]
+                    topol = ("cluster_coef", "assort", "avg_degree")
+                    colors = ["midnightblue", "steelblue", "skyblue"]
 
                     y_pos = np.arange(len(topol))
-                    topol_values = [density, cluster_coef, assort, avg_degree]
+                    topol_values = [cluster_coef, assort, avg_degree]
                     plt.bar(y_pos, topol_values, color=colors, align='center')
                     plt.xticks(y_pos, topol)
+
+
+                elif analyzeArgs["plot"] == "nodes_edges":
+
+                    topol = ("#nodes", "density")
+                    colors = ["midnightblue", "steelblue"]
+
+                    y_pos = np.arange(len(topol))
+                    topol_values = [len(g.nodes()) / dataArgs["n_max"],density]
+                    plt.bar(y_pos, topol_values, color=colors, align='center')
+                    plt.xticks(y_pos, topol)
+
 
                 elif analyzeArgs["plot"] == "distr":
 
@@ -637,6 +659,11 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
         if analyzeArgs["save_plots"] == True:
             filename = os.path.join(model_name, "digits_over_latent.png")
             plt.savefig(filename)
+
+
+
+
+
 
     if modelArgs["latent_dim"] > 2:
 
@@ -724,13 +751,25 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
                 if analyzeArgs["plot"] == "topol":
 
-                    topol = ("density", "cluster_coef", "assort", "avg_degree")
-                    colors = ["midnightblue", "blue", "steelblue", "skyblue"]
+                    topol = ("cluster_coef", "assort", "avg_degree")
+                    colors = ["midnightblue", "steelblue", "skyblue"]
 
                     y_pos = np.arange(len(topol))
-                    topol_values = [density, cluster_coef, assort, avg_degree]
+                    topol_values = [cluster_coef, assort, avg_degree]
                     plt.bar(y_pos, topol_values, color=colors, align='center')
                     plt.xticks(y_pos, topol)
+
+
+                elif analyzeArgs["plot"] == "nodes_edges":
+
+                    topol = ("#nodes", "density")
+                    colors = ["midnightblue", "steelblue"]
+
+                    y_pos = np.arange(len(topol))
+                    topol_values = [len(g.nodes()) / dataArgs["n_max"],density]
+                    plt.bar(y_pos, topol_values, color=colors, align='center')
+                    plt.xticks(y_pos, topol)
+
 
                 elif analyzeArgs["plot"] == "distr":
 

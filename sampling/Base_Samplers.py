@@ -133,11 +133,17 @@ class Base_Samplers():
 
         g = nx.Graph()
 
-        width = random_n
+        if random_n <= self.n_complete:
+            width = random_n
+        else:
+            width = self.n_complete
+
         x = random.randint(0, self.n_complete - width)
         y = random.randint(0, self.n_complete - width)
 
-        a_sample = self.a_complete[x:x + width, y:y + width]
-        g = nx.from_numpy_matrix(a_sample.toarray())
+        a_complete = (self.a_complete.toarray())
+        np.random.shuffle(a_complete)  ## in-place shuffling
+        a_sample = a_complete[x:x + width, y:y + width]
+        g = nx.from_numpy_matrix(a_sample)
         return g
 

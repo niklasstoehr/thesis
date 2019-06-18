@@ -46,11 +46,11 @@ class Snowball():
 
     def snowball(self,size,k):
         q=Queue() 
-        list_nodes=list(self.complete_graph.nodes())
+        list_nodes=list(self.g_complete.nodes())
         m = k
         dictt = set()
         while(m):
-            id = random.sample(list(self.complete_graph.nodes()),1)[0]
+            id = random.sample(list(self.g_complete.nodes()),1)[0]
             q.enqueue(id)
             m = m - 1
         #print(q.printQueue())
@@ -60,7 +60,7 @@ class Snowball():
                 self.G1.add_node(id)
                 if(id not in dictt):
                     dictt.add(id)
-                    list_neighbors = list(self.complete_graph.neighbors(id))
+                    list_neighbors = list(self.g_complete.neighbors(id))
                     if(len(list_neighbors) > k):
                         for x in list_neighbors[:k]:
                             q.enqueue(x)
@@ -72,7 +72,7 @@ class Snowball():
                 else:
                     continue
             else:
-                initial_nodes = random.sample(list(self.complete_graph.nodes()) and list(dictt),k)
+                initial_nodes = random.sample(list(self.g_complete.nodes()) and list(dictt),k)
                 no_of_nodes = len(initial_nodes)
                 for id in initial_nodes:
                     q.enqueue(id) 
