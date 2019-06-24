@@ -11,12 +11,40 @@ class Base_Samplers():
 
 
 
-    def bfs(self, source_starts, depth):
+    def bfs(self, random_n):
+
+        g = nx.Graph()
+        start_node = random.randint(0, self.n_complete - 1)
+        g.add_node(start_node)
+
+        queue = list()
+        queue.append(start_node)
+
+        while len(g) < random_n:
+
+            if len(queue) > 0:
+                node = queue.pop(0)
+                neighbors = [n for n in self.g_complete.neighbors(node)]
+
+                for neighbor in neighbors:
+
+                    if g.has_edge(node, neighbor) == False and len(g) < random_n:
+                        g.add_edge(node, neighbor)
+                        queue.append(neighbor)
+
+            else:
+                break
+
+        return g
+
+
+
+    def standard_bfs(self, source_starts, depth):
 
         g = nx.Graph()
 
         for i in range(0, source_starts):
-            e = nx.bfs_edges(self.g_complete, source=random.randint(0, self.n_complete),
+            e = nx.bfs_edges(self.g_complete, source=random.randint(0, self.n_complete -1 ),
                              depth_limit=depth)
             g.add_edges_from(list(e))
             return g
@@ -33,7 +61,7 @@ class Base_Samplers():
 
         for i in range(0, source_starts):
 
-            start_node = random.randint(0, self.n_complete)
+            start_node = random.randint(0, self.n_complete - 1 )
 
             for j in range(0, source_return):
 
@@ -69,7 +97,7 @@ class Base_Samplers():
         nodes = []
 
         for i in range(0, random_n):
-            nodes.append(random.randint(0, self.n_complete))
+            nodes.append(random.randint(0, self.n_complete - 1))
 
         n = list(set(nodes))
         g.add_nodes_from(list(n))
@@ -100,7 +128,7 @@ class Base_Samplers():
         for i in range(0, source_starts):
 
             if jump_bias == "uniform":
-                next_node = random.randint(0, self.n_complete)
+                next_node = random.randint(0, self.n_complete - 1)
             if jump_bias == "degree":  # toDo
                 next_node = np.random.choice(self.g_complete.nodes, 1, p=degree_probs)
 

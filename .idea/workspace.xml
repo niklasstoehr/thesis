@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbca810b-2863-47bb-ae0f-73595c7950e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/support/comparing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/2_ER-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/2_ER-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/real_world-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/real_world-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_ER.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/2_ER.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archive/15_06/Growth Models and Real-world Graphs.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/archive/15_06/Growth Models and Real-world Graphs.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/real_world.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/real_world.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sampling/ForestFire.py" beforeDir="false" afterPath="$PROJECT_DIR$/sampling/ForestFire.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sampling/Snowball.py" beforeDir="false" afterPath="$PROJECT_DIR$/sampling/Snowball.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/generating.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/generating.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sampling/Base_Samplers.py" beforeDir="false" afterPath="$PROJECT_DIR$/sampling/Base_Samplers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/support/comparing.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/comparing.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,31 +21,34 @@
     <session id="-1172977722">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.5" value="2" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.5" value="4" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="15" />
+          <entry key="ipynb" value="2" />
+          <entry key="py" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="15" />
+          <entry key="IPNB" value="2" />
+          <entry key="Python" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1182" />
+          <entry key="py" value="1646" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1182" />
+          <entry key="Python" value="1646" />
         </counts>
       </usages-collector>
     </session>
@@ -53,33 +56,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sampling/ForestFire.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="22" selection-start-line="22" selection-end-line="25" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sampling/Random_Walk.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="88" selection-start-line="88" selection-end-line="88" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sampling/Snowball.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
+            <state relative-caret-position="810">
               <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -103,20 +82,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/support/generating.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="568" selection-start-line="568" selection-end-line="568" />
-              <folding>
-                <marker date="1560869522654" expanded="true" signature="12810:27798" ph="..." />
-              </folding>
+            <state relative-caret-position="9675">
+              <caret line="651" column="49" selection-start-line="651" selection-start-column="49" selection-end-line="651" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/support/comparing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="381" lean-forward="true" selection-start-line="381" selection-end-line="381" />
+            <state relative-caret-position="6030">
+              <caret line="407" selection-start-line="407" selection-end-line="407" />
               <folding>
                 <element signature="e#0#69#0" expanded="true" />
               </folding>
@@ -149,7 +125,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/support/preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2010">
+            <state relative-caret-position="1965">
               <caret line="134" column="28" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
               <folding>
                 <element signature="e#25#46#0" expanded="true" />
@@ -161,10 +137,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sampling/Base_Samplers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1995">
-              <caret line="135" column="39" selection-start-line="135" selection-start-column="39" selection-end-line="135" selection-end-column="39" />
+            <state relative-caret-position="390">
+              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/VAE.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="146" selection-start-line="146" selection-end-line="146" />
+              <folding>
+                <element signature="e#8#46#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -197,12 +185,13 @@
         <option value="$PROJECT_DIR$/sampling/Metropolis_Hastings.py" />
         <option value="$PROJECT_DIR$/sampling/Ties.py" />
         <option value="$PROJECT_DIR$/sampling/Random_Walk.py" />
-        <option value="$PROJECT_DIR$/sampling/Base_Samplers.py" />
         <option value="$PROJECT_DIR$/sampling/ForestFire.py" />
         <option value="$PROJECT_DIR$/sampling/Snowball.py" />
         <option value="$PROJECT_DIR$/support/preprocessing.py" />
         <option value="$PROJECT_DIR$/support/generating.py" />
         <option value="$PROJECT_DIR$/support/comparing.py" />
+        <option value="$PROJECT_DIR$/sampling/Base_Samplers.py" />
+        <option value="$PROJECT_DIR$/models/VAE.py" />
       </list>
     </option>
   </component>
@@ -222,6 +211,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -229,21 +219,10 @@
               <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="thesis" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="sampling" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="support" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,7 +260,7 @@
     <frame x="0" y="22" width="1440" height="832" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26037195" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27110156" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -342,6 +321,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sampling/ForestFire.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" selection-start-line="22" selection-end-line="25" selection-end-column="21" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -358,12 +344,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sampling/Snowball.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sampling/Ties.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/support/generating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9675">
+          <caret line="651" column="49" selection-start-line="651" selection-start-column="49" selection-end-line="651" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/support/comparing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6030">
+          <caret line="407" selection-start-line="407" selection-end-line="407" />
+          <folding>
+            <element signature="e#0#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -386,39 +399,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sampling/Base_Samplers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="135" column="39" selection-start-line="135" selection-start-column="39" selection-end-line="135" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sampling/ForestFire.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="22" selection-start-line="22" selection-end-line="25" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sampling/Snowball.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/support/preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2010">
+        <state relative-caret-position="1965">
           <caret line="134" column="28" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
           <folding>
             <element signature="e#25#46#0" expanded="true" />
@@ -426,22 +409,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/support/generating.py">
+    <entry file="file://$PROJECT_DIR$/sampling/Base_Samplers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="568" selection-start-line="568" selection-end-line="568" />
+        <state relative-caret-position="390">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
           <folding>
-            <marker date="1560869522654" expanded="true" signature="12810:27798" ph="..." />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/support/comparing.py">
+    <entry file="file://$PROJECT_DIR$/graphs.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/real_world.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/VAE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="381" lean-forward="true" selection-start-line="381" selection-end-line="381" />
+        <state relative-caret-position="570">
+          <caret line="146" selection-start-line="146" selection-end-line="146" />
           <folding>
-            <element signature="e#0#69#0" expanded="true" />
+            <element signature="e#8#46#0" expanded="true" />
           </folding>
         </state>
       </provider>

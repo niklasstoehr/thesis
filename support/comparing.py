@@ -98,9 +98,21 @@ def compare_manifold_adjacency(g_original, a_original, analyzeArgs, modelArgs, d
             ## 2) create metric plots _______________________________________________
 
             acc = (metrics["tp"] + metrics["tn"]) / (metrics["tn"] + metrics["fn"] + metrics["tp"] + metrics["fp"])
-            prec = (metrics["tp"]) / (metrics["tp"] + metrics["fp"])
-            recall = (metrics["tp"]) / (metrics["tp"] + metrics["fn"])
-            f1 = 2 * (recall * prec) / (recall + prec)
+
+            if (metrics["tp"] + metrics["fp"]) > 0:
+                prec = (metrics["tp"]) / (metrics["tp"] + metrics["fp"])
+            else:
+                prec = 0
+
+            if (metrics["tp"] + metrics["fn"]) > 0:
+                recall = (metrics["tp"]) / (metrics["tp"] + metrics["fn"])
+            else:
+                recall = 0
+
+            if (recall + prec) > 0:
+                f1 = 2 * (recall * prec) / (recall + prec)
+            else:
+                f1 = 0
 
             y_pos = np.arange(3)
             final_metrics = [prec, recall, f1]
@@ -216,9 +228,21 @@ def compare_manifold_adjacency(g_original, a_original, analyzeArgs, modelArgs, d
                 ## 2) create metric plots _______________________________________________
 
                 acc = (metrics["tp"] + metrics["tn"]) / (metrics["tn"] + metrics["fn"] + metrics["tp"] + metrics["fp"])
-                prec = (metrics["tp"]) / (metrics["tp"] + metrics["fp"])
-                recall = (metrics["tp"]) / (metrics["tp"] + metrics["fn"])
-                f1 = 2 * (recall * prec) / (recall + prec)
+
+                if (metrics["tp"] + metrics["fp"]) > 0:
+                    prec = (metrics["tp"]) / (metrics["tp"] + metrics["fp"])
+                else:
+                    prec = 0
+
+                if (metrics["tp"] + metrics["fn"]) > 0:
+                    recall = (metrics["tp"]) / (metrics["tp"] + metrics["fn"])
+                else:
+                    recall = 0
+
+                if (recall + prec) > 0:
+                    f1 = 2 * (recall * prec) / (recall + prec)
+                else:
+                    f1 = 0
 
                 y_pos = np.arange(3)
                 final_metrics = [prec, recall, f1]
@@ -338,9 +362,21 @@ def compare_manifold_adjacency(g_original, a_original, analyzeArgs, modelArgs, d
                 ## 2) create metric plots _______________________________________________
 
                 acc = (metrics["tp"] + metrics["tn"]) / (metrics["tn"] + metrics["fn"] + metrics["tp"] + metrics["fp"])
-                prec = (metrics["tp"]) / (metrics["tp"] + metrics["fp"])
-                recall = (metrics["tp"]) / (metrics["tp"] + metrics["fn"])
-                f1 = 2 * (recall * prec) / (recall + prec)
+
+                if (metrics["tp"] + metrics["fp"]) > 0:
+                    prec = (metrics["tp"]) / (metrics["tp"] + metrics["fp"])
+                else:
+                    prec = 0
+
+                if (metrics["tp"] + metrics["fn"]) > 0:
+                    recall = (metrics["tp"]) / (metrics["tp"] + metrics["fn"])
+                else:
+                    recall = 0
+
+                if (recall + prec) > 0:
+                    f1 = 2 * (recall * prec) / (recall + prec)
+                else:
+                    f1 = 0
 
                 y_pos = np.arange(3)
                 final_metrics = [prec, recall, f1]
