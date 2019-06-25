@@ -16,9 +16,13 @@ def vis2D(analyzeArgs, modelArgs, models, data, batch_size=128, model_name="vae_
         model_name (string): which model is using this function
     """
 
+    if modelArgs["param_loss"]:
+        encoder, graph_decoder, param_decoder = models  # trained models
+    else:
+        encoder, graph_decoder = models  # trained models
+
     if modelArgs["latent_dim"] > 1:
 
-        encoder, decoder = models  # trained models
         x_test, y_test = data
 
         ## ENCODER - 2D Digit Classes _________________________________________
@@ -54,7 +58,12 @@ def vis2D(analyzeArgs, modelArgs, models, data, batch_size=128, model_name="vae_
 
 
 def visDistr(modelArgs, analyzeArgs, models, data, batch_size):
-    encoder, decoder = models  # trained models
+
+    if modelArgs["param_loss"]:
+        encoder, graph_decoder, param_decoder = models  # trained models
+    else:
+        encoder, graph_decoder = models  # trained models
+
     x_test, y_test = data
 
     # display a 2D plot of the digit classes in the latent space

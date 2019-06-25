@@ -12,7 +12,11 @@ def compare_manifold_adjacency(g_original, a_original, analyzeArgs, modelArgs, d
 
     print("latent dimensions:", modelArgs["latent_dim"])
 
-    encoder, decoder = models  # trained models
+    if modelArgs["param_loss"]:
+        encoder, graph_decoder, param_decoder = models  # trained models
+    else:
+        encoder, graph_decoder = models  # trained models
+
     x_test, y_test = data
 
     # display a 2D plot of the digit classes in the latent space
@@ -53,7 +57,7 @@ def compare_manifold_adjacency(g_original, a_original, analyzeArgs, modelArgs, d
         for j, xi in enumerate(grid_x):
 
             z_sample[0][0] = xi ** analyzeArgs["act_scale"]
-            x_decoded = decoder.predict(z_sample)
+            x_decoded = graph_decoder.predict(z_sample)
 
             comparison_matrix = np.zeros((n, n, 3))
             reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -183,7 +187,7 @@ def compare_manifold_adjacency(g_original, a_original, analyzeArgs, modelArgs, d
                 yi_value = yi ** analyzeArgs["act_scale"]
 
                 z_sample = np.array([[xi_value, yi_value]])
-                x_decoded = decoder.predict(z_sample)
+                x_decoded = graph_decoder.predict(z_sample)
 
                 comparison_matrix = np.zeros((n, n, 3))
                 reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -317,7 +321,7 @@ def compare_manifold_adjacency(g_original, a_original, analyzeArgs, modelArgs, d
 
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
                 z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
-                x_decoded = decoder.predict(z_sample)
+                x_decoded = graph_decoder.predict(z_sample)
 
                 comparison_matrix = np.zeros((n, n, 3))
                 reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -420,7 +424,7 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
                            batch_size=128):
     print("latent dimensions:", modelArgs["latent_dim"])
 
-    encoder, decoder = models  # trained models
+    encoder, graph_decoder = models  # trained models
     x_test, y_test = data
 
     # display a 2D plot of the digit classes in the latent space
@@ -457,7 +461,7 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
         for j, xi in enumerate(grid_x):
 
             z_sample[0][0] = xi ** analyzeArgs["act_scale"]
-            x_decoded = decoder.predict(z_sample)
+            x_decoded = graph_decoder.predict(z_sample)
 
             ## reconstruct upper triangular adjacency matrix
             reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -607,7 +611,7 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
                 yi_value = yi ** analyzeArgs["act_scale"]
 
                 z_sample = np.array([[xi_value, yi_value]])
-                x_decoded = decoder.predict(z_sample)
+                x_decoded = graph_decoder.predict(z_sample)
 
                 ## reconstruct upper triangular adjacency matrix
                 reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -753,7 +757,7 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
 
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
                 z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
-                x_decoded = decoder.predict(z_sample)
+                x_decoded = graph_decoder.predict(z_sample)
 
                 ## reconstruct upper triangular adjacency matrix
                 reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])

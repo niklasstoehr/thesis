@@ -12,7 +12,11 @@ import os
 
 def generate_single(analyzeArgs, modelArgs, dataArgs, models, color_map):
 
-    encoder, decoder = models  # trained models
+    if modelArgs["param_loss"]:
+        encoder, graph_decoder, param_decoder = models  # trained models
+    else:
+        encoder, graph_decoder = models  # trained models
+
     print("latent dimensions:", modelArgs["latent_dim"])
 
     z_sample = np.zeros(modelArgs["latent_dim"])
@@ -21,7 +25,7 @@ def generate_single(analyzeArgs, modelArgs, dataArgs, models, color_map):
     for i, dim in enumerate(analyzeArgs["z"]):
         z_sample[0][dim] = analyzeArgs["activations"][i]
 
-    x_decoded = decoder.predict(z_sample)
+    x_decoded = graph_decoder.predict(z_sample)
 
     ## reconstruct upper triangular adjacency matrix
     reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -45,7 +49,11 @@ def generate_single(analyzeArgs, modelArgs, dataArgs, models, color_map):
 def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map, batch_size=128):
     print("latent dimensions:", modelArgs["latent_dim"])
 
-    encoder, decoder = models  # trained models
+    if modelArgs["param_loss"]:
+        encoder, graph_decoder, param_decoder = models  # trained models
+    else:
+        encoder, graph_decoder = models  # trained models
+
     x_test, y_test = data
 
     # display a 2D plot of the digit classes in the latent space
@@ -86,7 +94,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
         for j, xi in enumerate(grid_x):
 
             z_sample[0][0] = xi ** analyzeArgs["act_scale"]
-            x_decoded = decoder.predict(z_sample)
+            x_decoded = graph_decoder.predict(z_sample)
 
             ## reconstruct upper triangular adjacency matrix
             reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -164,7 +172,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
                 yi_value = yi ** analyzeArgs["act_scale"]
 
                 z_sample = np.array([[xi_value, yi_value]])
-                x_decoded = decoder.predict(z_sample)
+                x_decoded = graph_decoder.predict(z_sample)
 
                 ## reconstruct upper triangular adjacency matrix
                 reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -259,7 +267,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
 
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
                 z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
-                x_decoded = decoder.predict(z_sample)
+                x_decoded = graph_decoder.predict(z_sample)
 
                 ## reconstruct upper triangular adjacency matrix
                 reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -314,7 +322,11 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
     print("latent dimensions:", modelArgs["latent_dim"])
 
-    encoder, decoder = models  # trained models
+    if modelArgs["param_loss"]:
+        encoder, graph_decoder, param_decoder = models  # trained models
+    else:
+        encoder, graph_decoder = models  # trained models
+
     x_test, y_test = data
 
     # display a 2D plot of the digit classes in the latent space
@@ -349,7 +361,7 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
         for j, xi in enumerate(grid_x):
 
             z_sample[0][0] = xi ** analyzeArgs["act_scale"]
-            x_decoded = decoder.predict(z_sample)
+            x_decoded = graph_decoder.predict(z_sample)
 
             ## reconstruct upper triangular adjacency matrix
             reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -473,7 +485,7 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
                 yi_value = yi ** analyzeArgs["act_scale"]
 
                 z_sample = np.array([[xi_value, yi_value]])
-                x_decoded = decoder.predict(z_sample)
+                x_decoded = graph_decoder.predict(z_sample)
 
                 ## reconstruct upper triangular adjacency matrix
                 reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -598,7 +610,7 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
                 z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
-                x_decoded = decoder.predict(z_sample)
+                x_decoded = graph_decoder.predict(z_sample)
 
                 ## reconstruct upper triangular adjacency matrix
                 reconstructed_a = reconstruct_adjacency(x_decoded, dataArgs["clip"], dataArgs["diag_offset"])
@@ -676,6 +688,13 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
         if analyzeArgs["save_plots"] == True:
             filename = os.path.join(model_name, "digits_over_latent.png")
             plt.savefig(filename)
+
+
+
+
+
+
+
 
 
 
