@@ -95,3 +95,4 @@ def visDistr(modelArgs, analyzeArgs, models, data, batch_size):
 
     if modelArgs["latent_dim"] > 1:
         g = sns.jointplot(z_mean[:, analyzeArgs["z"][0]], z_mean[:, analyzeArgs["z"][1]], kind="kde", space=0)
+        plt.show()

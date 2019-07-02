@@ -3,6 +3,7 @@ from support.preprocessing import reconstruct_adjacency, unpad_matrix, sort_adja
 import sys
 import networkx as nx
 from networkx.generators import random_graphs
+from networkx.generators import classic
 import numpy as np
 
 from matplotlib import pylab as plt
@@ -10,10 +11,32 @@ import os
 
 
 def decode_param(analyzeArgs, dataArgs, scaler, x_decoded):
-
     ## generate graph from generative parameters
     x_decoded = scaler.inverse_transform(x_decoded)
     x_decoded = np.squeeze(x_decoded)
+
+    ## ensure data matches range
+    if analyzeArgs["graph_type"] == "Complete":
+        n_gen = np.clip(int(x_decoded), 1, dataArgs["n_max"] - 1)
+        g = classic.complete_graph(n_gen)
+
+        params = ("n")
+        y_pos = np.arange(len(params))
+        param_values = [n_gen / dataArgs["n_max"]]
+
+        return g, y_pos, params, param_values
+
+    ## ensure data matches range
+    if analyzeArgs["graph_type"] == "Tree":
+        b_gen = np.clip(int(x_decoded[0]), 1, dataArgs["n_max"] - 1)
+        h_gen = np.clip(int(x_decoded[1]), 1, dataArgs["n_max"] - 1)
+        g = classic.balanced_tree(b, h)
+
+        params = ("b", "h")
+        y_pos = np.arange(len(params))
+        param_values = [b_gen, h_gen]
+
+        return g, y_pos, params, param_values
 
     ## ensure data matches range
     if analyzeArgs["graph_type"] == "ER":
@@ -27,6 +50,43 @@ def decode_param(analyzeArgs, dataArgs, scaler, x_decoded):
 
         return g, y_pos, params, param_values
 
+    ## ensure data matches range
+    if analyzeArgs["graph_type"] == "PA":
+        n_gen = np.clip(int(x_decoded[0]), 2, dataArgs["n_max"] - 1)
+        e_gen = np.clip(int(x_decoded[1]), 1, n_gen - 1)
+        g = random_graphs.barabasi_albert_graph(n_gen, e_gen, seed=None)
+
+        params = ("n", "e")
+        y_pos = np.arange(len(params))
+        param_values = [n_gen / dataArgs["n_max"], e_gen / n_gen]
+
+        return g, y_pos, params, param_values
+
+    ## ensure data matches range
+    if analyzeArgs["graph_type"] == "HK":
+        n_gen = np.clip(int(x_decoded[0]), 1, dataArgs["n_max"] - 1)
+        e_gen = np.clip(int(x_decoded[1]), 1, n_gen)
+        p_gen = np.clip(x_decoded[2], 0, 1)
+        g = random_graphs.powerlaw_cluster_graph(n_gen, e_gen, p_gen, seed=None)
+
+        params = ("n", "e", "p")
+        y_pos = np.arange(len(params))
+        param_values = [n_gen / dataArgs["n_max"], e_gen / n_gen, p_gen]
+
+        return g, y_pos, params, param_values
+
+    ## ensure data matches range
+    if analyzeArgs["graph_type"] == "SW":
+        n_gen = np.clip(int(x_decoded[0]), 1, dataArgs["n_max"] - 1)
+        k_gen = np.clip(int(x_decoded[1]), 0, n_gen - 1)
+        p_gen = np.clip(x_decoded[2], 0, 1)
+        g = random_graphs.newman_watts_strogatz_graph(n_gen, k_gen, p_gen, seed=None)  # no edges are removed
+
+        params = ("n", "k", "p")
+        y_pos = np.arange(len(params))
+        param_values = [n_gen / dataArgs["n_max"], k_gen / n_gen, p_gen]
+
+        return g, y_pos, params, param_values
 
 
 def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map, batch_size, scaler):
@@ -298,9 +358,6 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
             plt.savefig(filename)
 
 
-
-
-
 def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map, batch_size, scaler):
     print("latent dimensions:", modelArgs["latent_dim"])
 
@@ -351,7 +408,7 @@ def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
             ## create the plot_____________________________________________
 
-            colors = ["midnightblue", "steelblue"]
+            colors = ["midnightblue", "steelblue", "skyblue"]
 
             plt.bar(y_pos, param_values, color=colors, align='center')
             plt.plot([-1, 2], [0.25, 0.25], color='grey', linestyle='dashed')
@@ -372,7 +429,6 @@ def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data
         if analyzeArgs["save_plots"] == True:
             filename = os.path.join(model_name, "digits_over_latent.png")
             plt.savefig(filename)
-
 
     if modelArgs["latent_dim"] == 2:
 
@@ -416,7 +472,7 @@ def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
                 ## create the plot_____________________________________________
 
-                colors = ["midnightblue", "steelblue"]
+                colors = ["midnightblue", "steelblue", "skyblue"]
 
                 plt.bar(y_pos, param_values, color=colors, align='center')
                 plt.plot([-1, 2], [0.25, 0.25], color='grey', linestyle='dashed')
@@ -477,7 +533,7 @@ def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
                 ## create the plot_____________________________________________
 
-                colors = ["midnightblue", "steelblue"]
+                colors = ["midnightblue", "steelblue", "skyblue"]
 
                 plt.bar(y_pos, param_values, color=colors, align='center')
                 plt.plot([-1, 2], [0.25, 0.25], color='grey', linestyle='dashed')
@@ -490,4 +546,6 @@ def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data
         if analyzeArgs["save_plots"] == True:
             filename = os.path.join(model_name, "digits_over_latent.png")
             plt.savefig(filename)
+
+
 
