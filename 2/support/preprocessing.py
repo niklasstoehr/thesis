@@ -34,6 +34,7 @@ def sort_adjacency(g):
     return g, a
 
 
+
 ## obtain the upper triangle of adjacency matrix without diagonal
 
 def reshape_A(a, diag_offset, node_features=None):
@@ -45,6 +46,7 @@ def reshape_A(a, diag_offset, node_features=None):
         upper_a = np.reshape(a, (a.shape[0], a.shape[0], 1))  ## reshape to add channel 1
 
     return upper_a
+
 
 
 ## calculate the area of upper triangle of sorted adjacency matrix
@@ -60,6 +62,7 @@ def calculate_A_shape(n, diag_offset):
         return (n, n, 1)
 
     ## construct adjacency matrix from flattened upper_triangle
+
 
 
 def reconstruct_adjacency(upper_a, clip, diag_offset):
