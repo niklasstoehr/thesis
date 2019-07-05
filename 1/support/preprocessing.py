@@ -21,7 +21,7 @@ def sort_adjacency(g):
         node_sorting.append(
             (node_id, node_k1[node_id], node_k2[node_id], node_closeness[node_id], node_betweenness[node_id]))
 
-    node_descending = sorted(node_sorting, key=lambda x: (x[1], x[2]), reverse=True)
+    node_descending = sorted(node_sorting, key=lambda x: (x[1], x[2], x[3], x[4]), reverse=True)
 
     mapping = dict()
 
@@ -56,7 +56,7 @@ def calculate_A_shape(n, diag_offset):
     elif diag_offset == 1:
         return (int(((n * n) / 2) - (n / 2)),)
 
-    elif diag_offset == -1:  # keep entire adjacency matrix
+    elif diag_offset <= -1:  # keep entire adjacency matrix
         return (n, n, 1)
 
     ## construct adjacency matrix from flattened upper_triangle
@@ -91,9 +91,10 @@ def reconstruct_adjacency(upper_a, clip, diag_offset):
 
 ## pad the adjacency matrix to adhere to fixed size n_max
 
-def pad_matrix(a, n_max, fill_diag):
+def pad_matrix(a, n_max, diag_value):
     ## fill the diagonal with fill_diag
-    np.fill_diagonal(a, fill_diag)
+
+    np.fill_diagonal(a, diag_value)
 
     max_adjacency = np.zeros([n_max, n_max])
     max_adjacency[:a.shape[0], :a.shape[1]] = a
@@ -101,14 +102,20 @@ def pad_matrix(a, n_max, fill_diag):
     return max_adjacency
 
 
+
+
+
+
+
 ## unpad the adjacency matrix by looking at diagonal values
 
 def unpad_matrix(max_adjacency, diag_value, fix_n):
+
     if fix_n == False:
 
         keep = list()
         for i in range(0, max_adjacency.shape[0]):
-            if max_adjacency[i][i] == diag_value:
+            if max_adjacency[i][i] > 0:
                 keep.append(i)
 
         ## delete rows and columns
