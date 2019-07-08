@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbca810b-2863-47bb-ae0f-73595c7950e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2/.ipynb_checkpoints/data_imputation-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/2/.ipynb_checkpoints/data_imputation-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2/.ipynb_checkpoints/feature_structure_independence-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/2/.ipynb_checkpoints/feature_structure_independence-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2/data_imputation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/2/data_imputation.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2/feature_structure_independence.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/2/feature_structure_independence.ipynb" afterDir="false" />
@@ -113,8 +111,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2/support/preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="95" selection-start-line="95" selection-end-line="110" />
+            <state relative-caret-position="326">
+              <caret line="112" selection-start-line="112" selection-end-line="122" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -426,8 +424,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2/support/preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="95" selection-start-line="95" selection-end-line="110" />
+        <state relative-caret-position="326">
+          <caret line="112" selection-start-line="112" selection-end-line="122" selection-end-column="24" />
         </state>
       </provider>
     </entry>
