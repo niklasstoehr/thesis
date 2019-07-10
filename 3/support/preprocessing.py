@@ -8,7 +8,7 @@ from networkx.generators import random_graphs
 
 ## Sorting rows by node degree (decreasing)
 
-def sort_adjacency(g):
+def sort_adj(g):
     node_k1 = dict(g.degree())  # sort by degree
     node_k2 = nx.average_neighbor_degree(g)  # sort by neighbor degree
     node_closeness = nx.closeness_centrality(g)
@@ -16,7 +16,9 @@ def sort_adjacency(g):
 
     node_sorting = list()
 
-    #for node_id in range(0, len(g)):
+    ## sort topology amd attributes _________________
+
+    # for node_id in range(0, len(g)):
     for node_id in g.nodes():
         node_sorting.append(
             (node_id, node_k1[node_id], node_k2[node_id], node_closeness[node_id], node_betweenness[node_id]))
@@ -24,12 +26,14 @@ def sort_adjacency(g):
     node_descending = sorted(node_sorting, key=lambda x: (x[1], x[2], x[3], x[4]), reverse=True)
 
     mapping = dict()
+    # f_sorted = f
 
     for i, node in enumerate(node_descending):
         mapping[node[0]] = i
+        # f_sorted[i] = node_descending[i][5]
 
     a = nx.adjacency_matrix(g, nodelist=mapping.keys()).todense()
-    #g = nx.relabel_nodes(g, mapping)  # change node_id according to ordering
+    g = nx.relabel_nodes(g, mapping)  # change node_id according to ordering
 
     return g, a
 
@@ -92,22 +96,24 @@ def reconstruct_adjacency(upper_a, clip, diag_offset):
     return a
 
 
-
 ## unpad the adjacency matrix by looking at diagonal values
 
-def unpad_matrix(max_adjacency, diag_value, fix_n):
-    if fix_n == False:
+def unpad_matrix(max_adjacency, diag_value, node_margin, fix_n):
+    nodes_n = max_adjacency.shape[0]
 
+    if fix_n == False:
         keep = list()
         for i in range(0, max_adjacency.shape[0]):
-            if max_adjacency[i][i] > 0:
+            if max_adjacency[i][i] >= diag_value - node_margin:
                 keep.append(i)
 
         ## delete rows and columns
         max_adjacency = max_adjacency[:, keep]  # keep columns
         max_adjacency = max_adjacency[keep, :]  # keep rows
 
-    return max_adjacency
+        nodes_n = len(keep)
+
+    return max_adjacency, nodes_n
 
 
 ## pad the adjacency matrix to adhere to fixed size n_max
@@ -124,13 +130,37 @@ def pad_matrix(a, n_max, diag_value):
 
 
 
-def prepare_in_out(T, diag_offset, A_shape):
-    T = np.asarray(T)
 
-    if diag_offset >= 0:  # vector input
-        return T, (A_shape[0],), A_shape[0]
-    else:  # matrix input
-        return T, (A_shape[0], A_shape[1], 1), (A_shape[0], A_shape[1], 1)
+def pad_attr(f, dataArgs):
+    ## padding attributes vector with zeroes
+    if dataArgs["n_max"] - f.shape[0] > 0:
+        zeroes = np.zeros((dataArgs["n_max"] - f.shape[0], dataArgs["n_features"]))
+        f = np.concatenate((f, zeroes))
+
+    return f
+
+
+def unpad_attr(f, nodes_n, analyzeArgs, dataArgs):
+    f = f[:nodes_n, :]  ## shorten
+
+    if analyzeArgs["normalize_feature"]:
+        f = (f - np.min(f)) / np.ptp(f)  ## normalize feature values
+
+    if dataArgs["n_features"] == 1:
+        f = np.reshape(f, (f.shape[0]))  ## reshape
+
+    return f
+
+
+
+
+def prepare_in_out(diag_offset, A_shape, F_shape):
+
+    if diag_offset <= -2:  # matrix input
+        return ((F_shape[1], F_shape[2]), (A_shape[0], A_shape[1], 1)), ((F_shape[1], F_shape[2]), (A_shape[0], A_shape[1], 1))
+
+
+
 
 
 ## Preprocess Graph____________________________________
