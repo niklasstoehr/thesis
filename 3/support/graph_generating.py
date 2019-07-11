@@ -71,7 +71,7 @@ def generate_manifold_features(analyzeArgs, modelArgs, dataArgs, models, data, o
 
         # display a 30x30 2D manifold of digits
         n = dataArgs["n_max"]  # number of nodes
-        figure = np.zeros((1 * n, analyzeArgs["size_of_manifold"] * n))
+        figure = np.zeros((1 * n, analyzeArgs["size_of_manifold"] * n, 3))
 
         # linearly spaced coordinates corresponding to the 2D plot
         # of digit classes in the latent space
@@ -274,7 +274,7 @@ def generate_manifold_features(analyzeArgs, modelArgs, dataArgs, models, data, o
 
         # display a 30x30 2D manifold of digits
         n = dataArgs["n_max"]  # number of nodes
-        figure = np.zeros((analyzeArgs["size_of_manifold"] * n, analyzeArgs["size_of_manifold"] * n))
+        figure = np.zeros((analyzeArgs["size_of_manifold"] * n, analyzeArgs["size_of_manifold"] * n, 3))
 
         # linearly spaced coordinates corresponding to the 2D plot
         # of digit classes in the latent space
