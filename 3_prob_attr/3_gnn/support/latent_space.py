@@ -59,7 +59,7 @@ def vis2D(analyzeArgs, modelArgs, models, data, batch_size=128, model_name="vae_
 
 def visDistr(modelArgs, analyzeArgs, models, data, batch_size):
 
-    encoder, topol_decoder, attr_decoder = models  # trained models
+    encoder, decoder = models  # trained models
     F_org, [A_fil, A] = data
 
 

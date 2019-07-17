@@ -12,7 +12,7 @@ import os
 
 
 def generate_single_features(analyzeArgs, modelArgs, dataArgs, models, orig_cmap):
-    encoder, topol_decoder, attr_decoder = models  # trained models
+    encoder, decoder = models  # trained models
 
     print("latent dimensions:", modelArgs["latent_dim"])
 
@@ -22,14 +22,15 @@ def generate_single_features(analyzeArgs, modelArgs, dataArgs, models, orig_cmap
     for i, dim in enumerate(analyzeArgs["z"]):
         z_sample[0][dim] = analyzeArgs["activations"][i]
 
-    a_decoded = topol_decoder.predict(z_sample)
-    f_decoded = attr_decoder.predict(z_sample)
+    [f_decoded, a_decoded] = decoder.predict(z_sample)
+    a_decoded = np.squeeze(a_decoded[0])
+    f_decoded = f_decoded[0]
 
     ## reconstruct upper triangular adjacency matrix
     reconstructed_a = reconstruct_adjacency(a_decoded, dataArgs["clip"], dataArgs["diag_offset"])
     reconstructed_a, nodes_n = unpad_matrix(reconstructed_a, dataArgs["diag_value"], 0.1, dataArgs["fix_n"])
 
-    reconstructed_f = unpad_attr(f_decoded[0], nodes_n, analyzeArgs, dataArgs)
+    reconstructed_f = unpad_attr(f_decoded, nodes_n, analyzeArgs, dataArgs)
 
     print("nodes_n:", nodes_n)
     print("node attributes:", reconstructed_f)
