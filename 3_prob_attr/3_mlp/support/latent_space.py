@@ -59,15 +59,13 @@ def vis2D(analyzeArgs, modelArgs, models, data, batch_size=128, model_name="vae_
 
 def visDistr(modelArgs, analyzeArgs, models, data, batch_size):
 
-    if modelArgs["param_loss"]:
-        encoder, graph_decoder, param_decoder = models  # trained models
-    else:
-        encoder, graph_decoder = models  # trained models
+    (encoder, decoder) = models
 
-    x_test, y_test = data
+    (f_test, g_test) = data
+    fg_test = np.concatenate((f_test, g_test), axis=1)
 
     # display a 2D plot of the digit classes in the latent space
-    z_mean, z_log_var, z = encoder.predict(x_test, batch_size)
+    z_mean, z_log_var, z = encoder.predict([f_test, g_test], batch_size)
 
     ## Plot Difference Plot _______________________________
 
