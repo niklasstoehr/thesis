@@ -30,7 +30,7 @@ def decode_param(analyzeArgs, dataArgs, scaler, x_decoded):
     if analyzeArgs["graph_type"] == "Tree":
         b_gen = np.clip(int(x_decoded[0]), 1, dataArgs["n_max"] - 1)
         h_gen = np.clip(int(x_decoded[1]), 1, dataArgs["n_max"] - 1)
-        g = classic.balanced_tree(b, h)
+        g = classic.balanced_tree(b_gen, h_gen)
 
         params = ("b", "h")
         y_pos = np.arange(len(params))
@@ -132,7 +132,7 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
         ## 2) create graph plots_______________________________________________
 
-        fig, axs = plt.subplots(1, analyzeArgs["size_of_manifold"], figsize=(10, 10))
+        fig, axs = plt.subplots(1, analyzeArgs["size_of_manifold"], figsize=(10, 2), dpi = 300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
         axs = axs.ravel()
 
@@ -144,8 +144,7 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
             ## convert graph to adjacency
             g, reconstructed_a = sort_adjacency(g)
-            reconstructed_a = pad_matrix(reconstructed_a, dataArgs["n_max"], dataArgs[
-                "diag_value"])  # pad adjacency matrix to allow less nodes than n_max and fill diagonal
+            reconstructed_a = pad_matrix(reconstructed_a, dataArgs["n_max"], dataArgs["diag_value"])  # pad adjacency matrix to allow less nodes than n_max and fill diagonal
 
             ## 1) create adjacency plot_____________________________
 
@@ -161,7 +160,7 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
             jx = np.unravel_index(j, axs.shape)
             plt.sca(axs[jx])
 
-            nx.draw(g, node_size=10, node_color=color_map)
+            nx.draw(g, node_size=15, node_color=color_map)
             axs[jx].set_axis_off()
             axs[jx].set(ylabel='z_0')
 
@@ -172,7 +171,7 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
         # Plot_____________________________
 
-        plt.figure(figsize=(15, 300))
+        plt.figure(figsize=(20, 100), dpi=100)
         plt.xticks(pixel_range, sample_range_x)
         plt.xlabel("z_0", fontweight='bold')
         plt.imshow(figure, cmap='Greys_r')
@@ -214,7 +213,7 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
         ## 2) create graph plots_______________________________________________
 
-        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8))
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8), dpi=300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
         for i, yi in enumerate(grid_y):
@@ -255,7 +254,7 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
         # Plot_____________________________
 
-        plt.figure(figsize=(10, 10))
+        plt.figure(figsize=(10, 10), dpi=300)
         plt.xticks(pixel_range, sample_range_x)
         plt.yticks(pixel_range, sample_range_y)
         plt.xlabel("z_0", fontweight='bold')
@@ -306,13 +305,13 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
         ## 2) create graph plots_______________________________________________
 
-        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(10, 10))
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(10, 10), dpi=300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
         for i, yi in enumerate(grid_y):
             for j, xi in enumerate(grid_x):
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
-                z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
+                z_sample[0][analyzeArgs["z"][1]] = yi ** analyzeArgs["act_scale"]
                 x_decoded = param_decoder.predict(z_sample)
 
                 g, y_pos, params, param_values = decode_param(analyzeArgs, dataArgs, scaler, x_decoded)
@@ -345,7 +344,7 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
         # Plot_____________________________
 
-        plt.figure(figsize=(10, 10))
+        plt.figure(figsize=(10, 10), dpi=300)
         plt.xticks(pixel_range, sample_range_x)
         plt.yticks(pixel_range, sample_range_y)
         plt.xlabel("z_" + str(analyzeArgs["z"][0]), fontweight='bold')
@@ -356,6 +355,10 @@ def generate_param_graph_manifold(analyzeArgs, modelArgs, dataArgs, models, data
         if analyzeArgs["save_plots"] == True:
             filename = os.path.join(model_name, "digits_over_latent.png")
             plt.savefig(filename)
+
+
+
+
 
 
 def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map, batch_size, scaler):
@@ -454,7 +457,8 @@ def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
         ## 1) create graph topol plots_______________________________________________
 
-        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8))
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8),
+                                dpi=300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
         for i, yi in enumerate(grid_y):
@@ -517,13 +521,13 @@ def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
         ## 1) create graph topol plots_______________________________________________
 
-        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(10, 10))
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(10, 10), dpi=300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
         for i, yi in enumerate(grid_y):
             for j, xi in enumerate(grid_x):
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
-                z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
+                z_sample[0][analyzeArgs["z"][1]] = yi ** analyzeArgs["act_scale"]
                 x_decoded = param_decoder.predict(z_sample)
 
                 g, y_pos, params, param_values = decode_param(analyzeArgs, dataArgs, scaler, x_decoded)
@@ -543,9 +547,95 @@ def generate_param_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data
 
                 axs[i, j].set_axis_off()
 
-        if analyzeArgs["save_plots"] == True:
-            filename = os.path.join(model_name, "digits_over_latent.png")
-            plt.savefig(filename)
+    plt.show()
 
 
 
+
+    ## 1) create further graph topol plots_______________________________________________
+
+    fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8), dpi=300)
+    # fig.subplots_adjust(hspace = .5, wspace=.001)
+
+    for i, yi in enumerate(grid_y):
+        for j, xi in enumerate(grid_x):
+
+            z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
+            z_sample[0][analyzeArgs["z"][1]] = yi ** analyzeArgs["act_scale"]
+            x_decoded = param_decoder.predict(z_sample)
+
+            g, y_pos, params, param_values = decode_param(analyzeArgs, dataArgs, scaler, x_decoded)
+
+            ## Obtain Graph Topologies____________________________________
+
+            density = nx.density(g)
+
+            if len(g) > 0:
+                if nx.is_connected(g):
+                    diameter = nx.diameter(g)
+            else:
+                diameter = -1
+
+            if len(g) > 0:
+                cluster_coef = nx.average_clustering(g)
+            else:
+                cluster_coef = 0
+
+            if len(g) > 0:
+                if g.number_of_edges() > 0:
+                    assort = nx.degree_assortativity_coefficient(g, x='out', y='in')
+                else:
+                    assort = 0
+            else:
+                assort = 0
+
+            if len(g) > 0:
+                edges = g.number_of_edges()
+            else:
+                edges = 0
+
+            if len(g) > 0:
+                avg_degree = sum(i for i in nx.degree_centrality(g).values()) / len(
+                    nx.degree_centrality(g).keys())
+            else:
+                avg_degree = 0
+
+            # compute index for the subplot, and set this subplot as current
+            plt.sca(axs[i, j])
+
+            ## create the plot_____________________________________________
+
+            if analyzeArgs["plot"] == "topol":
+
+                topol = ("cluster_coef", "assort", "avg_degree")
+                colors = ["midnightblue", "steelblue", "skyblue"]
+
+                y_pos = np.arange(len(topol))
+                topol_values = [cluster_coef, assort, avg_degree]
+                plt.bar(y_pos, topol_values, color=colors, align='center')
+                plt.xticks(y_pos, topol)
+
+
+            elif analyzeArgs["plot"] == "nodes_edges":
+
+                topol = ("#nodes", "density")
+                colors = ["midnightblue", "steelblue"]
+
+                y_pos = np.arange(len(topol))
+                topol_values = [len(g.nodes()) / dataArgs["n_max"], min(density, 1)]
+                plt.bar(y_pos, topol_values, color=colors, align='center')
+                plt.xticks(y_pos, topol)
+
+            elif analyzeArgs["plot"] == "distr":
+
+                import collections
+
+                degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
+                degreeCount = collections.Counter(degree_sequence)
+                deg, cnt = zip(*degreeCount.items())
+
+                plt.plot(cnt)
+
+            axs[i, j].set_axis_off()
+
+    plt.show()

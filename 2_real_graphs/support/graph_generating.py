@@ -87,7 +87,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
 
         ## 2) create graph plots_______________________________________________
 
-        fig, axs = plt.subplots(1, analyzeArgs["size_of_manifold"], figsize=(10, 10))
+        fig, axs = plt.subplots(1, analyzeArgs["size_of_manifold"], figsize=(10, 2), dpi = 300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
         axs = axs.ravel()
 
@@ -113,7 +113,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
             jx = np.unravel_index(j, axs.shape)
             plt.sca(axs[jx])
 
-            nx.draw(g, node_size=10, node_color=color_map)
+            nx.draw(g, node_size=15, node_color=color_map)
             axs[jx].set_axis_off()
             axs[jx].set(ylabel='z_0')
 
@@ -124,7 +124,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
 
         # Plot_____________________________
 
-        plt.figure(figsize=(15, 300))
+        plt.figure(figsize=(20, 100), dpi = 100)
         plt.xticks(pixel_range, sample_range_x)
         plt.xlabel("z_0", fontweight='bold')
         plt.imshow(figure, cmap='Greys_r')
@@ -162,7 +162,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
 
         ## 2) create graph plots_______________________________________________
 
-        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8))
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8), dpi = 300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
         for i, yi in enumerate(grid_y):
@@ -190,7 +190,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
 
                 # compute index for the subplot, and set this subplot as current
                 plt.sca(axs[i, j])
-                nx.draw(g, node_size=10, node_color=color_map)
+                nx.draw_kamada_kawai(g, node_size=10, node_color=color_map)
                 axs[i, j].set_axis_off()
 
         start_range = n // 2
@@ -201,7 +201,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
 
         # Plot_____________________________
 
-        plt.figure(figsize=(10, 10))
+        plt.figure(figsize=(10, 10), dpi = 300)
         plt.xticks(pixel_range, sample_range_x)
         plt.yticks(pixel_range, sample_range_y)
         plt.xlabel("z_0", fontweight='bold')
@@ -258,7 +258,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
 
         ## 2) create graph plots_______________________________________________
 
-        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(10, 10))
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(10, 10), dpi = 300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
 
@@ -266,7 +266,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
             for j, xi in enumerate(grid_x):
 
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
-                z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
+                z_sample[0][analyzeArgs["z"][1]] = yi ** analyzeArgs["act_scale"]
                 x_decoded = graph_decoder.predict(z_sample)
 
                 ## reconstruct upper triangular adjacency matrix
@@ -296,7 +296,7 @@ def generate_manifold(analyzeArgs, modelArgs, dataArgs, models, data, color_map,
 
         # Plot_____________________________
 
-        plt.figure(figsize=(10, 10))
+        plt.figure(figsize=(10, 10), dpi = 300)
         plt.xticks(pixel_range, sample_range_x)
         plt.yticks(pixel_range, sample_range_y)
         plt.xlabel("z_" + str(analyzeArgs["z"][0]), fontweight='bold')
@@ -431,8 +431,12 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
             elif analyzeArgs["plot"] == "distr":
 
+                import collections
                 degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
-                plt.plot(degree_sequence)
+                degreeCount = collections.Counter(degree_sequence)
+                deg, cnt = zip(*degreeCount.items())
+
+                plt.plot(cnt)
 
             axs[jx].set_axis_off()
 
@@ -475,7 +479,7 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
         ## 1) create graph topol plots_______________________________________________
 
-        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8))
+        fig, axs = plt.subplots(analyzeArgs["size_of_manifold"], analyzeArgs["size_of_manifold"], figsize=(8, 8), dpi = 300)
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
         for i, yi in enumerate(grid_y):
@@ -555,8 +559,12 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
                 elif analyzeArgs["plot"] == "distr":
 
+                    import collections
                     degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
-                    plt.plot(degree_sequence)
+                    degreeCount = collections.Counter(degree_sequence)
+                    deg, cnt = zip(*degreeCount.items())
+
+                    plt.plot(cnt)
 
                 axs[i, j].set_axis_off()
 
@@ -609,7 +617,7 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
             for j, xi in enumerate(grid_x):
 
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
-                z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
+                z_sample[0][analyzeArgs["z"][1]] = yi ** analyzeArgs["act_scale"]
                 x_decoded = graph_decoder.predict(z_sample)
 
                 ## reconstruct upper triangular adjacency matrix
@@ -680,14 +688,21 @@ def generate_topol_manifold(analyzeArgs, modelArgs, dataArgs, models, data, colo
 
                 elif analyzeArgs["plot"] == "distr":
 
+                    import collections
                     degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
-                    plt.plot(degree_sequence)
+                    degreeCount = collections.Counter(degree_sequence)
+                    deg, cnt = zip(*degreeCount.items())
+
+                    plt.plot(cnt)
 
                 axs[i, j].set_axis_off()
 
         if analyzeArgs["save_plots"] == True:
             filename = os.path.join(model_name, "digits_over_latent.png")
             plt.savefig(filename)
+
+
+
 
 
 

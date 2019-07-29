@@ -34,10 +34,10 @@ class Base_Samplers():
                 if neigh == node_1:
                     neigh_2_prob[i] = 1 / p  ## go back prob -> step back
 
-                elif g_complete.has_edge(node_1, neigh):
+                elif g.has_edge(node_1, neigh):
                     neigh_2_prob[i] = 1  ## common neighbor prob -> community exploration
 
-                elif g_complete.has_edge(node_1, neigh) == False:
+                elif g.has_edge(node_1, neigh) == False:
                     neigh_2_prob[i] = 1 / q  ## no common neighbor prob -> free exploration
 
             neigh_2_prob = neigh_2_prob / sum(neigh_2_prob)  ## normalize probability

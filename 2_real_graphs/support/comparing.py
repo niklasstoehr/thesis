@@ -4,6 +4,7 @@ import networkx as nx
 import numpy as np
 from matplotlib import pylab as plt
 import os
+import collections
 
 
 ## DECODER - Latent Space Interpolation____________________________
@@ -457,6 +458,8 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
         axs = axs.ravel()
 
         degree_sequence_original = sorted([d for n, d in g_original.degree()], reverse=True)  # degree sequence
+        degreeCount_original = collections.Counter(degree_sequence_original)
+        deg_original, cnt_original = zip(*degreeCount_original.items())
 
         for j, xi in enumerate(grid_x):
 
@@ -555,15 +558,15 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
             elif analyzeArgs["plot"] == "distr":
 
                 degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
+                degreeCount = collections.Counter(degree_sequence)
+                deg, cnt = zip(*degreeCount.items())
 
-                degree_sequence = np.asarray(degree_sequence) / sum(degree_sequence)  # normalize degree sequence
-                degree_sequence = np.repeat(degree_sequence, (len(degree_sequence_original) / len(
-                    degree_sequence)))  # stretch normalize degree sequence to match length
-                degree_sequence_original = np.asarray(degree_sequence_original) / sum(
-                    degree_sequence_original)  # normalize original degree sequence
+                cnt = np.asarray(cnt) / sum(cnt)  # normalize degree sequence
+                cnt = np.repeat(cnt, (len(cnt_original) / len(cnt)))  # stretch normalize degree sequence to match length
+                cnt_original = np.asarray(cnt_original) / sum(cnt_original)  # normalize original degree sequence
 
-                plt.plot(degree_sequence_original, color="midnightblue", linestyle='dashed')
-                plt.plot(degree_sequence, color="steelblue")
+                plt.plot(cnt_original, color="midnightblue", linestyle='dashed')
+                plt.plot(cnt, color="steelblue")
 
             axs[jx].set_axis_off()
 
@@ -603,6 +606,8 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
         degree_sequence_original = sorted([d for n, d in g_original.degree()], reverse=True)  # degree sequence
+        degreeCount_original = collections.Counter(degree_sequence_original)
+        deg_original, cnt_original = zip(*degreeCount_original.items())
 
         for i, yi in enumerate(grid_y):
             for j, xi in enumerate(grid_x):
@@ -704,15 +709,16 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
                 elif analyzeArgs["plot"] == "distr":
 
                     degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
+                    degreeCount = collections.Counter(degree_sequence)
+                    deg, cnt = zip(*degreeCount.items())
 
-                    degree_sequence = np.asarray(degree_sequence) / sum(degree_sequence)  # normalize degree sequence
-                    degree_sequence = np.repeat(degree_sequence, (len(degree_sequence_original) / len(
-                        degree_sequence)))  # stretch normalize degree sequence to match length
-                    degree_sequence_original = np.asarray(degree_sequence_original) / sum(
-                        degree_sequence_original)  # normalize original degree sequence
+                    cnt = np.asarray(cnt) / sum(cnt)  # normalize degree sequence
+                    cnt = np.repeat(cnt,
+                                    (len(cnt_original) / len(cnt)))  # stretch normalize degree sequence to match length
+                    cnt_original = np.asarray(cnt_original) / sum(cnt_original)  # normalize original degree sequence
 
-                    plt.plot(degree_sequence_original, color="midnightblue", linestyle='dashed')
-                    plt.plot(degree_sequence, color="steelblue")
+                    plt.plot(cnt_original, color="midnightblue", linestyle='dashed')
+                    plt.plot(cnt, color="steelblue")
 
                 axs[i, j].set_axis_off()
 
@@ -751,6 +757,8 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
         # fig.subplots_adjust(hspace = .5, wspace=.001)
 
         degree_sequence_original = sorted([d for n, d in g_original.degree()], reverse=True)  # degree sequence
+        degreeCount_original = collections.Counter(degree_sequence_original)
+        deg_original, cnt_original = zip(*degreeCount_original.items())
 
         for i, yi in enumerate(grid_y):
             for j, xi in enumerate(grid_x):
@@ -850,15 +858,16 @@ def compare_topol_manifold(g_original, a_original, analyzeArgs, modelArgs, dataA
                 elif analyzeArgs["plot"] == "distr":
 
                     degree_sequence = sorted([d for n, d in g.degree()], reverse=True)  # degree sequence
+                    degreeCount = collections.Counter(degree_sequence)
+                    deg, cnt = zip(*degreeCount.items())
 
-                    degree_sequence = np.asarray(degree_sequence) / sum(degree_sequence)  # normalize degree sequence
-                    degree_sequence = np.repeat(degree_sequence, (len(degree_sequence_original) / len(
-                        degree_sequence)))  # stretch normalize degree sequence to match length
-                    degree_sequence_original = np.asarray(degree_sequence_original) / sum(
-                        degree_sequence_original)  # normalize original degree sequence
+                    cnt = np.asarray(cnt) / sum(cnt)  # normalize degree sequence
+                    cnt = np.repeat(cnt,
+                                    (len(cnt_original) / len(cnt)))  # stretch normalize degree sequence to match length
+                    cnt_original = np.asarray(cnt_original) / sum(cnt_original)  # normalize original degree sequence
 
-                    plt.plot(degree_sequence_original, color="midnightblue", linestyle='dashed')
-                    plt.plot(degree_sequence, color="steelblue")
+                    plt.plot(cnt_original, color="midnightblue", linestyle='dashed')
+                    plt.plot(cnt, color="steelblue")
 
                 axs[i, j].set_axis_off()
 

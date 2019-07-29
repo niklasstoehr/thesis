@@ -55,6 +55,9 @@ def generate_single_features(analyzeArgs, modelArgs, dataArgs, models, orig_cmap
     plt.show()
 
 
+
+
+
 ## DECODER - Latent Space Interpolation____________________________
 
 def generate_manifold_features(analyzeArgs, modelArgs, dataArgs, models, data, orig_cmap, batch_size=128):
@@ -179,6 +182,7 @@ def generate_manifold_features(analyzeArgs, modelArgs, dataArgs, models, data, o
 
 
 
+
     ## Latent Space Dimension is larger than 2 ______________________
 
     if modelArgs["latent_dim"] > 2:
@@ -206,15 +210,11 @@ def generate_manifold_features(analyzeArgs, modelArgs, dataArgs, models, data, o
                                               np.mean(np.square(np.exp(z_log_var[:, analyzeArgs["z"][1]]))),
                                               analyzeArgs["size_of_manifold"]))
         elif analyzeArgs["sample"] == "range":
-            grid_x = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
-                                 analyzeArgs["size_of_manifold"])
-            grid_y = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],
-                                 analyzeArgs["size_of_manifold"])[::-1]  ## revert
+            grid_x = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1], analyzeArgs["size_of_manifold"])
+            grid_y = np.linspace(analyzeArgs["act_range"][0], analyzeArgs["act_range"][1],analyzeArgs["size_of_manifold"])[::-1]  ## revert
         elif analyzeArgs["sample"] == "normal":
-            grid_x = np.sort(
-                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), 1, analyzeArgs["size_of_manifold"]))
-            grid_y = np.sort(
-                np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]), 1, analyzeArgs["size_of_manifold"]))
+            grid_x = np.sort( np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][0]]), 1, analyzeArgs["size_of_manifold"]))
+            grid_y = np.sort( np.random.normal(np.mean(z_mean[:, analyzeArgs["z"][1]]), 1, analyzeArgs["size_of_manifold"]))
 
         ## 2) create graph plots_______________________________________________
 
@@ -225,7 +225,7 @@ def generate_manifold_features(analyzeArgs, modelArgs, dataArgs, models, data, o
             for j, xi in enumerate(grid_x):
 
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
-                z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
+                z_sample[0][analyzeArgs["z"][1]] = yi ** analyzeArgs["act_scale"]
 
                 [f_decoded, a_decoded] = decoder.predict(z_sample)
                 f_decoded = np.reshape(f_decoded, (-1, 1))

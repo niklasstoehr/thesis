@@ -215,7 +215,7 @@ def generate_manifold_features(analyzeArgs, modelArgs, dataArgs, models, data, o
             for j, xi in enumerate(grid_x):
 
                 z_sample[0][analyzeArgs["z"][0]] = xi ** analyzeArgs["act_scale"]
-                z_sample[0][analyzeArgs["z"][1]] = xi ** analyzeArgs["act_scale"]
+                z_sample[0][analyzeArgs["z"][1]] = yi ** analyzeArgs["act_scale"]
 
                 [f_decoded, a_decoded] = decoder.predict(z_sample)
                 a_decoded = np.squeeze(a_decoded[0])

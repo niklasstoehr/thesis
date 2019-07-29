@@ -74,20 +74,23 @@ def visDistr(modelArgs, analyzeArgs, models, data, batch_size):
     normal = np.random.gumbel(0.0, 1.0, 100000)
     kde_normal = scipy.stats.gaussian_kde(normal)
 
-    col_titles = ['z_{}'.format(col) for col in range(z_mean.shape[1])]
+    # col_titles = ['z_{}'.format(col) for col in range(z_mean.shape[1])]
+    fig, axs = plt.subplots(1, modelArgs["latent_dim"], figsize=(10, 3), dpi=200)
 
-    for i in range(1, modelArgs["latent_dim"] + 1):
-        fig = plt.subplot(1, modelArgs["latent_dim"] + 1, i)
-
-        plt.xlabel('x')
-        plt.ylabel('y')
+    for i in range(0, modelArgs["latent_dim"]):
+        plt.sca(axs[i])
+        plt.xlabel('z_' + str(i), fontweight="bold")
+        # plt.ylabel('y')
         grid = np.linspace(-4, 4, 20)
-        kde_z = scipy.stats.gaussian_kde(z_mean[:, i - 1])
+        kde_z = scipy.stats.gaussian_kde(z_mean[:, i])
+        axs[i].set_ylim([0, 0.4])
 
         plt.plot(grid, kde_normal(grid), label="Gaussian prior", color='steelblue', linestyle=':',
                  markerfacecolor='blue', linewidth=6)
         plt.plot(grid, kde_z(grid), label="z", color='midnightblue', markerfacecolor='blue', linewidth=6)
-        #plt.plot(grid, kde_normal(grid) - kde_z(grid), label="difference", color='steelblue', linewidth=6)
+
+        plt.tight_layout()
+        # plt.plot(grid, kde_normal(grid) - kde_z(grid), label="difference", color='steelblue', linewidth=6)
 
     ## Plot Joint Distribution Plot _______________________________
 
