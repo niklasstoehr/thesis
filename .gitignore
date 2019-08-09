@@ -1,12 +1,12 @@
-1_synth_graphs/data
-1_synth_graphs/results
-1_synth_graphs/models
-1_synth_graphs/prototyping/models
+1_synth/data
+1_synthresults
+1_synth/models
+1_synth/prototyping/models
 
-2_real_graphs/data
-2_real_graphs/results
-2_real_graphs/models
-2_real_graphs/prototyping/models
+2_real/data
+2_real/results
+2_real/models
+2_real/prototyping/models
 
 3_synth_attr/data
 3_synth_attr/results
