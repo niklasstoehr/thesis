@@ -1,19 +1,19 @@
 1_synth/data
 1_synth/results
-1_synth/models
+1_synth/models/weights
 1_synth/prototyping/models
 
 2_real/data
 2_real/results
-2_real/models
+2_real/models/weights
 2_real/prototyping/models
 
 3_synth_attr/data
 3_synth_attr/results
-3_synth_attr/models
+3_synth_attr/models/weights
 3_synth_attr/prototyping/models
 
 4_real_attr/data
 4_real_attr/results
-4_real_attr/models
+4_real_attr/models/weights
 4_real_attr/prototyping/models
