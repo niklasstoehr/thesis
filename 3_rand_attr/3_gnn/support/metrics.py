@@ -3,6 +3,7 @@ from sklearn.metrics import mutual_info_score
 from scipy.stats import entropy
 
 
+
 ## metric for measuring the disentanglement - Mutual Information Gap (MIG)
 
 def compute_mig(v_array, z_array):  # ground truth, latent variables
@@ -96,4 +97,86 @@ def compute_mi(v, z):
     # print("mi:", mi)
 
     return mi
+
+
+# @title Mutual Information Gap Support Functions
+
+def compute_mig(z, v):
+    if z.shape[0] > 1:
+
+        ## normalize data
+        z, z_mean, z_std = normalize_data(z)
+        v, v_mean, v_std = normalize_data(v)
+
+        ## discretize data
+        z = discretize_data(z)
+        v = discretize_data(v)
+
+        m = discrete_mutual_info(z, v)
+        assert m.shape[0] == z.shape[0]
+        assert m.shape[1] == v.shape[0]
+        # m is [num_latents, num_factors]
+        entropy = discrete_entropy(v)
+        sorted_m = np.sort(m, axis=0)[::-1]
+
+        mig_score = np.mean(np.divide(sorted_m[0, :] - sorted_m[1, :], entropy[:]))
+
+    else:
+
+        mig_score = "MIG not defined for one latent variable"
+
+    return mig_score
+
+
+## Utilities_______________________________
+
+"""Utility functions that are useful for the different metrics."""
+import sklearn
+
+
+def discrete_mutual_info(z, v):
+    """Compute discrete mutual information."""
+    num_codes = z.shape[0]
+    num_factors = v.shape[0]
+    m = np.zeros([num_codes, num_factors])
+    for i in range(num_codes):
+        for j in range(num_factors):
+
+            if num_factors > 1:
+                m[i, j] = sklearn.metrics.mutual_info_score(v[j, :], z[i, :])
+            elif num_factors == 1:
+                m[i, j] = sklearn.metrics.mutual_info_score(np.squeeze(v), z[i, :])
+
+    return m
+
+
+def discrete_entropy(ys):
+    """Compute discrete mutual information."""
+    num_factors = ys.shape[0]
+    h = np.zeros(num_factors)
+    for j in range(num_factors):
+        h[j] = sklearn.metrics.mutual_info_score(ys[j, :], ys[j, :])
+    return h
+
+
+def normalize_data(data, mean=None, stddev=None):
+    if mean is None:
+        mean = np.mean(data, axis=1)
+    if stddev is None:
+        stddev = np.std(data, axis=1)
+    return (data - mean[:, np.newaxis]) / stddev[:, np.newaxis], mean, stddev
+
+
+def discretize_data(target, num_bins=10):
+    """Discretization based on histograms."""
+    target = np.nan_to_num(target)
+    discretized = np.zeros_like(target)
+    for i in range(target.shape[0]):
+        discretized[i, :] = np.digitize(target[i, :], np.histogram(target[i, :], num_bins)[1][:-1])
+    return discretized
+
+
+
+
+
 
