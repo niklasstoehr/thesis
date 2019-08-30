@@ -3,46 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="cbca810b-2863-47bb-ae0f-73595c7950e3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/1_2_Tree-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/1_2_Tree-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/1_Complete-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/1_Complete-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/2_ER-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/2_ER-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/2_PA-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/2_PA-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/3_HK-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/3_HK-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/3_SW-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/3_SW-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/.ipynb_checkpoints/real_world-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/1_2_Tree.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/1_2_Tree.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/1_Complete.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/1_Complete.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/2_ER.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/2_ER.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/2_PA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/2_PA.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/3_HK.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/3_HK.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/3_SW.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/3_SW.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/models/weights/vae_mlp_mnist_latent_dim_1.h5" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/models/weights/vae_mlp_mnist_latent_dim_1.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/models/weights/vae_mlp_mnist_latent_dim_2.h5" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/models/weights/vae_mlp_mnist_latent_dim_2.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/models/weights/vae_mlp_mnist_latent_dim_3.h5" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/models/weights/vae_mlp_mnist_latent_dim_3.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/models/weights/vae_mlp_mnist_latent_dim_4.h5" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/models/weights/vae_mlp_mnist_latent_dim_4.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/prototype_gnn.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/prototype_gnn.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/real_world.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/support/graph_generating.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/support/graph_generating.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/support/latent_space.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/support/latent_space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_prob_graphs/support/param_generating.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_prob_graphs/support/param_generating.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_real_graphs/models/weights/vae_mlp_mnist_latent_dim_2.h5" beforeDir="false" afterPath="$PROJECT_DIR$/2_real_graphs/models/weights/vae_mlp_mnist_latent_dim_2.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_real_graphs/models/weights/vae_mlp_mnist_latent_dim_3.h5" beforeDir="false" afterPath="$PROJECT_DIR$/2_real_graphs/models/weights/vae_mlp_mnist_latent_dim_3.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_real_graphs/sampling/Base_Samplers.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_real_graphs/sampling/Base_Samplers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_real_graphs/support/comparing.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_real_graphs/support/comparing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_real_graphs/support/graph_generating.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_real_graphs/support/graph_generating.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_real_graphs/support/latent_space.py" beforeDir="false" afterPath="$PROJECT_DIR$/2_real_graphs/support/latent_space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_gnn/.ipynb_checkpoints/feature_structure_independence-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_gnn/.ipynb_checkpoints/feature_structure_independence-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_gnn/feature_structure_independence.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_gnn/feature_structure_independence.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_gnn/models/weights/vae_mlp_mnist_latent_dim_3.h5" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_gnn/models/weights/vae_mlp_mnist_latent_dim_3.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_gnn/support/graph_generating.py" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_gnn/support/graph_generating.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_gnn/support/latent_space.py" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_gnn/support/latent_space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_mlp/.ipynb_checkpoints/feature_structure_independence-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_mlp/.ipynb_checkpoints/feature_structure_independence-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_mlp/feature_structure_independence.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_mlp/feature_structure_independence.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_2.h5" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_2.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_3.h5" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_3.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_4.h5" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_4.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_mlp/support/graph_generating.py" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_mlp/support/graph_generating.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_prob_attr/3_mlp/support/latent_space.py" beforeDir="false" afterPath="$PROJECT_DIR$/3_prob_attr/3_mlp/support/latent_space.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_synth/.ipynb_checkpoints/1_Complete-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_synth/1_Complete.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_synth/archive/06_June/25_06/graphs.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/1_synth/archive/06_June/25_06/graphs.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_real/cora.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/2_real/cora.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_synth_attr/3_gnn/feature_structure_independence.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/3_synth_attr/3_gnn/feature_structure_independence.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_synth_attr/3_gnn/models/weights/vae_mlp_mnist_latent_dim_3.h5" beforeDir="false" afterPath="$PROJECT_DIR$/3_synth_attr/3_gnn/models/weights/vae_mlp_mnist_latent_dim_3.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_synth_attr/3_mlp/feature_structure_independence.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/3_synth_attr/3_mlp/feature_structure_independence.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_synth_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_2.h5" beforeDir="false" afterPath="$PROJECT_DIR$/3_synth_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_2.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_synth_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_3.h5" beforeDir="false" afterPath="$PROJECT_DIR$/3_synth_attr/3_mlp/models/weights/vae_mlp_mnist_latent_dim_3.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_real_attr/amazon.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/4_real_attr/amazon.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_real_attr/mag.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/4_real_attr/mag.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,38 +25,38 @@
     <session id="-1172977722">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="18" />
+          <entry key="project.closed" value="21" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="3" />
-          <entry key="project.open.time.4" value="5" />
+          <entry key="project.open.time.1" value="4" />
+          <entry key="project.open.time.4" value="7" />
           <entry key="project.open.time.5" value="9" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="20" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="ipynb" value="3" />
-          <entry key="py" value="88" />
+          <entry key="py" value="106" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IPNB" value="3" />
-          <entry key="Python" value="88" />
+          <entry key="Python" value="106" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
-          <entry key="py" value="2260" />
+          <entry key="py" value="2277" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="2260" />
+          <entry key="Python" value="2277" />
         </counts>
       </usages-collector>
     </session>
@@ -93,91 +64,67 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/3_prob_attr/3_mlp/support/latent_space.py">
+        <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="58" selection-start-line="58" selection-end-line="98" selection-end-column="18" />
+            <state relative-caret-position="350">
+              <caret line="143" column="4" lean-forward="true" selection-start-line="143" selection-start-column="4" selection-end-line="143" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/plotting.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="55" selection-end-column="18" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/3_prob_attr/3_mlp/support/graph_generating.py">
+        <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/graph_generating.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="296" lean-forward="true" selection-start-line="60" selection-end-line="296" />
+            <state relative-caret-position="1080">
+              <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
               <folding>
-                <element signature="e#0#103#0" expanded="true" />
+                <element signature="e#0#91#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2_real_graphs/support/graph_generating.py">
+        <entry file="file://$PROJECT_DIR$/2_real/support/graph_generating.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10485">
-              <caret line="699" column="17" selection-end-line="717" />
+            <state relative-caret-position="651">
+              <caret line="123" column="8" lean-forward="true" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="44" />
               <folding>
                 <element signature="e#0#69#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/preprocessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/latent_space.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/param_generating.py">
+        <entry file="file://$PROJECT_DIR$/2_real/support/latent_space.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="89" lean-forward="true" selection-start-line="4" selection-end-line="89" />
+            <state relative-caret-position="478">
+              <caret line="79" selection-start-line="79" selection-end-line="82" selection-end-column="23" />
               <folding>
-                <element signature="e#0#97#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2_real_graphs/sampling/Base_Samplers.py">
+        <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/comparing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2_real_graphs/support/comparing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11145">
-              <caret line="743" column="28" selection-end-line="873" />
+            <state relative-caret-position="474">
+              <caret line="484" selection-start-line="484" selection-end-line="488" selection-end-column="32" />
               <folding>
                 <element signature="e#0#69#0" expanded="true" />
               </folding>
@@ -186,15 +133,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2_real_graphs/support/preprocessing.py">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/latent_space.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="59" selection-start-line="59" selection-end-line="94" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1_prob_graphs/models/VAE.py">
+        <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/keras_dgl/layers/multi_graph_cnn_layer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+            <state relative-caret-position="-480">
+              <caret line="20" column="15" lean-forward="true" selection-end-line="92" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/keras_dgl/layers/graph_ops.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="19" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/keras_dgl/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -276,6 +257,8 @@
         <option value="$PROJECT_DIR$/2_real_graphs/sampling/Base_Samplers.py" />
         <option value="$PROJECT_DIR$/2_real_graphs/support/comparing.py" />
         <option value="$PROJECT_DIR$/2_real_graphs/support/graph_generating.py" />
+        <option value="$PROJECT_DIR$/4_real_attr/sampling/Base_Samplers.py" />
+        <option value="$PROJECT_DIR$/3_synth_attr/3_gnn/support/preprocessing.py" />
       </list>
     </option>
   </component>
@@ -295,7 +278,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -306,36 +288,37 @@
             <path>
               <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="1_prob_graphs" type="462c0819:PsiDirectoryNode" />
+              <item name="2_real" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="1_prob_graphs" type="462c0819:PsiDirectoryNode" />
+              <item name="2_real" type="462c0819:PsiDirectoryNode" />
               <item name="support" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="3_prob_attr" type="462c0819:PsiDirectoryNode" />
+              <item name="3_synth_attr" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="3_prob_attr" type="462c0819:PsiDirectoryNode" />
-              <item name="3_mlp" type="462c0819:PsiDirectoryNode" />
+              <item name="3_synth_attr" type="462c0819:PsiDirectoryNode" />
+              <item name="3_gnn" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="3_prob_attr" type="462c0819:PsiDirectoryNode" />
-              <item name="3_mlp" type="462c0819:PsiDirectoryNode" />
+              <item name="3_synth_attr" type="462c0819:PsiDirectoryNode" />
+              <item name="3_gnn" type="462c0819:PsiDirectoryNode" />
               <item name="support" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -373,7 +356,7 @@
     <frame x="0" y="22" width="1440" height="832" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32331902" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33619457" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -426,22 +409,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sampling/Snowball.py" />
-    <entry file="file://$PROJECT_DIR$/sampling/Base_Samplers.py" />
-    <entry file="file://$PROJECT_DIR$/support/latent_space.py" />
-    <entry file="file://$PROJECT_DIR$/support/graph_generating.py" />
-    <entry file="file://$PROJECT_DIR$/models/VAE_basic.py" />
-    <entry file="file://$PROJECT_DIR$/support/comparing.py" />
-    <entry file="file://$PROJECT_DIR$/support/metrics.py" />
-    <entry file="file://$PROJECT_DIR$/support/preprocessing.py" />
-    <entry file="file://$PROJECT_DIR$/models/VAE.py" />
-    <entry file="file://$PROJECT_DIR$/support/param_generating.py" />
-    <entry file="file://$PROJECT_DIR$/models/VAE_gnn.py" />
-    <entry file="file://$PROJECT_DIR$/1/prototype_optimize_param.ipynb" />
-    <entry file="file://$PROJECT_DIR$/1/support/preprocessing.py" />
-    <entry file="file://$PROJECT_DIR$/1/models/VAE.py" />
-    <entry file="file://$PROJECT_DIR$/1/models/VAE_gnn.py" />
-    <entry file="file://$PROJECT_DIR$/1/support/param_generating.py" />
     <entry file="file://$PROJECT_DIR$/1/support/comparing.py" />
     <entry file="file://$PROJECT_DIR$/4/support/graph_generating.py" />
     <entry file="file://$PROJECT_DIR$/2/support/preprocessing.py" />
@@ -460,150 +427,165 @@
     <entry file="file://$PROJECT_DIR$/1/support/latent_space.py" />
     <entry file="file://$PROJECT_DIR$/4/support/preprocessing.py" />
     <entry file="file://$PROJECT_DIR$/1/models/VAE_basic.py" />
-    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_mlp/support/preprocessing.py">
+    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_mlp/support/preprocessing.py" />
+    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_gnn/support/preprocessing.py" />
+    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_gnn/support/graph_generating.py" />
+    <entry file="file://$PROJECT_DIR$/2_real_graphs/support/latent_space.py" />
+    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_gnn/support/latent_space.py" />
+    <entry file="file://$PROJECT_DIR$/1_prob_graphs/models/VAE_gnn.py" />
+    <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/graph_generating.py" />
+    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_mlp/support/latent_space.py" />
+    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_mlp/support/graph_generating.py" />
+    <entry file="file://$PROJECT_DIR$/2_real_graphs/support/graph_generating.py" />
+    <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/preprocessing.py" />
+    <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/latent_space.py" />
+    <entry file="file://$PROJECT_DIR$/2_real_graphs/sampling/Base_Samplers.py" />
+    <entry file="file://$PROJECT_DIR$/2_real_graphs/support/comparing.py" />
+    <entry file="file://$PROJECT_DIR$/2_real_graphs/support/preprocessing.py" />
+    <entry file="file://$PROJECT_DIR$/1_prob_graphs/models/VAE.py" />
+    <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/param_generating.py" />
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_mlp/support/graph_generating.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="849">
-          <caret line="119" column="18" selection-start-line="119" selection-start-column="18" selection-end-line="119" selection-end-column="35" />
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_gnn/support/preprocessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="149" column="14" selection-start-line="149" selection-start-column="14" selection-end-line="149" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_gnn/support/graph_generating.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="256" column="16" selection-start-line="256" selection-start-column="16" selection-end-line="256" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#91#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2_real_graphs/support/latent_space.py">
+    <entry file="file://$PROJECT_DIR$/4_real_attr/sampling/Base_Samplers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
-          <caret line="94" selection-start-line="94" selection-end-line="94" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_gnn/support/latent_space.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1_prob_graphs/models/VAE_gnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3285">
-          <caret line="234" selection-start-line="234" selection-end-line="235" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/graph_generating.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10410">
-          <caret line="694" selection-end-line="717" />
-          <folding>
-            <element signature="e#0#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2_real_graphs/support/graph_generating.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10485">
-          <caret line="699" column="17" selection-end-line="717" />
-          <folding>
-            <element signature="e#0#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2_real_graphs/sampling/Base_Samplers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+          <caret line="55" selection-end-line="55" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2_real_graphs/support/comparing.py">
+    <entry file="file://$PROJECT_DIR$/1_synth/support/latent_space.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11145">
-          <caret line="743" column="28" selection-end-line="873" />
+        <state relative-caret-position="-737">
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1_synth/support/graph_generating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
           <folding>
             <element signature="e#0#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2_real_graphs/support/preprocessing.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1_prob_graphs/models/VAE.py">
+    <entry file="file://$PROJECT_DIR$/1_synth/models/VAE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+        <state relative-caret-position="113">
+          <caret line="112" column="43" selection-start-line="112" selection-start-column="43" selection-end-line="112" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/preprocessing.py">
+    <entry file="file://$PROJECT_DIR$/1_synth/support/preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+        <state relative-caret-position="237">
+          <caret line="111" selection-start-line="111" selection-end-line="124" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_mlp/support/latent_space.py">
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="58" selection-start-line="58" selection-end-line="98" selection-end-column="18" />
+        <state relative-caret-position="350">
+          <caret line="143" column="4" lean-forward="true" selection-start-line="143" selection-start-column="4" selection-end-line="143" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/plotting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="55" selection-end-column="18" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/3_prob_attr/3_mlp/support/graph_generating.py">
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/keras_dgl/layers/multi_graph_cnn_layer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="296" lean-forward="true" selection-start-line="60" selection-end-line="296" />
+        <state relative-caret-position="-480">
+          <caret line="20" column="15" lean-forward="true" selection-end-line="92" />
           <folding>
-            <element signature="e#0#103#0" expanded="true" />
+            <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/latent_space.py">
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/keras_dgl/layers/graph_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/keras_dgl/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/comparing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="484" selection-start-line="484" selection-end-line="488" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/latent_space.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
+          <caret line="59" selection-start-line="59" selection-end-line="94" selection-end-column="18" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1_prob_graphs/support/param_generating.py">
+    <entry file="file://$PROJECT_DIR$/3_synth_attr/3_gnn/support/graph_generating.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="89" lean-forward="true" selection-start-line="4" selection-end-line="89" />
+        <state relative-caret-position="1080">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
           <folding>
-            <element signature="e#0#97#0" expanded="true" />
+            <element signature="e#0#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2_real/support/graph_generating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="123" column="8" lean-forward="true" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2_real/support/latent_space.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="79" selection-start-line="79" selection-end-line="82" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
