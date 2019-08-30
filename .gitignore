@@ -1,17 +1,17 @@
-1_synth/data
-1_synth/results
-1_synth/models/weights
-1_synth/prototyping/models
+1_rand/data
+1_rand/results
+1_rand/models/weights
+1_rand/prototyping/models
 
 2_real/data
 2_real/results
 2_real/models/weights
 2_real/prototyping/models
 
-3_synth_attr/data
-3_synth_attr/results
-3_synth_attr/models/weights
-3_synth_attr/prototyping/models
+3_rand_attr/data
+3_rand_attr/results
+3_rand_attr/models/weights
+3_rand_attr/prototyping/models
 
 4_real_attr/data
 4_real_attr/results
